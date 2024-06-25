@@ -31,6 +31,10 @@ public class Product {
 	@Column(name = "precio")
 	private double precio;
 	
+	@Column(name = "precioReposicion")
+	private double precioReposicion;
+	
+	
 	@Column(name = "cantidad")
 	private int cantidad;
 
@@ -38,11 +42,12 @@ public class Product {
 	private int cantidadCritica;
 	
 
-	public Product(String nombre, String descripcion, double precio, int cantidad, int cantidadCritica) {
+	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad, int cantidadCritica) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
+		this.precioReposicion = precioReposicion;
 		this.cantidad = cantidad;
 		this.cantidadCritica = cantidadCritica;
 	}

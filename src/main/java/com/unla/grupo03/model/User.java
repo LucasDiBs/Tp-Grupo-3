@@ -16,10 +16,14 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter 
 @Setter
+@ToString
+@NoArgsConstructor
+
 public class User {
 
 	@Id
@@ -40,10 +44,7 @@ public class User {
 
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="user", cascade = {CascadeType.ALL})
 	private Set<UserRol> userRoles = new HashSet<>();
-	
-	public User() {
 
-	}
 	
 	public User(String nombre, String apellido, String email, String password, Set<UserRol> userRoles) {
 
@@ -53,6 +54,8 @@ public class User {
 		this.password = password;
 		this.userRoles = userRoles;
 	}
+	
+	
 	
 	public User(String nombre, String apellido, String email, String password) {
 		
@@ -97,11 +100,7 @@ public class User {
 		return roles.get(0);
 	}
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password="
-				+ password + ", userRoles=" + userRoles + "]";
-	}
+	
 
 	
 }

@@ -14,11 +14,13 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Table(name="user_rol", uniqueConstraints=@UniqueConstraint(columnNames= {"rol", "user_id"}))
 public class UserRol {
 	
@@ -36,11 +38,6 @@ public class UserRol {
 	public UserRol(User user, String rol) {
 		this.user = user;
 		this.rol = rol;
-	}
-
-	@Override
-	public String toString() {
-		return "UserRol [id=" + id + ", rol=" + rol + "]";
 	}
 
 	public String getRol() {
