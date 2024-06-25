@@ -89,14 +89,17 @@ public class AdminController {
 			else
 				session.setAttribute("msg", "Algo salio mal");	
 		}	
-		return "redirect: /admin/registro";
+		
+			return "/admin/registro";
 	}
 	
 	
 	@GetMapping("/nuevoProducto")
 	public String mostarProductoForm(Model modelo) {		
 		Product producto = new Product();
-		modelo.addAttribute("producto", producto); // Llama a la funcion en el servicio		
+		
+		modelo.addAttribute("producto", producto); 
+		
 		return "admin/nuevoProducto"; 
 	}
 	
@@ -113,7 +116,7 @@ public class AdminController {
 			session.setAttribute("msg", "Algo salio mal");	
 		
 		
-		return "redirect: /admin/nuevoProducto"; 
+		return "/admin/nuevoProducto"; 
 	}
 	
 
