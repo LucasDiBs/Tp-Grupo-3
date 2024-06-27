@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="#">Gestión de Usuarios</a> 
@@ -21,9 +20,15 @@
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/">Home</a>
-	        </li>   
-			<li class="nav-item"><a class="nav-link" href="productos">Productos</a></li>	   
+	          <a class="nav-link active" aria-current="page" href="/admin/">Home</a>
+	        </li>
+	        
+			<li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
+	        <li class="nav-item"><a class="nav-link" href="registro">Registrar Administrador</a></li>	
+			<li class="nav-item"><a class="nav-link" href="clients">Clientes</a></li>
+			<li class="nav-item"><a class="nav-link" href="productos">Productos</a></li>
+			<li class="nav-item"><a class="nav-link" href="cargarProducto">Registrar Productos</a></li>
+	   
 	      </ul>
 
 	    </div>
@@ -31,26 +36,32 @@
 	</nav>
 
 	<div class="container mt-4">
+	
+						<h1 style="color:green;" align="center">ADMINISTRADORES</h1>
 			<table class="table tabale-striped tabale-bordered ">
 			
-			<thead class="table-primary">
+			<thead class="table-primary" text-alaing: "center"> 
+			
 	
 				<tr>
 					<td>Id</td>
 					<td>Nombre</td>
-					<td>Descripcion</td>
-					<td>Precio</td>
-					
+					<td>Apellido</td>
+					<td>Email</td>
+					<td>Rol</td>
 					
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="producto : ${productos}">
-					<td th:text="${producto.id}">id</td>
-					<td th:text="${producto.nombre}">Nombre</td>
-					<td th:text="${producto.descripcion}">Descripcion</td>					
-					<td th:text="${producto.precio}">Precio</td>
-					
+				<tr th:each="admin : ${administradores}">
+				
+				<div th:if= "${admin.userRoles[0].rol} == 'ADMIN'">	
+					<td th:text="${admin.id}">id</td>
+					<td th:text="${admin.nombre}">Nombre</td>
+					<td th:text="${admin.apellido}">Apellido</td>					
+					<td th:text="${admin.email}">Email</td>
+					<td th:text="${admin.userRoles[0].rol}">Rol</td>		
+			
 					
 				</tr>
 			</tbody>
