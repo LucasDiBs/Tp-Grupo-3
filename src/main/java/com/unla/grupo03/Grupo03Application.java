@@ -50,13 +50,13 @@ public class Grupo03Application   implements CommandLineRunner{
 		Product producto5 = new Product("Mochila", "Mochila Grande",  (double)500,(double)250,10,3);
 		repositorio.save(producto4);
 		
-		com.unla.grupo03.model.User userAdmin = new com.unla.grupo03.model.User("Admin1", "Admin1","admin1@admin1","1234");			
-
-		uService.createAdmin(userAdmin);
-		
-		com.unla.grupo03.model.User user = new  com.unla.grupo03.model.User ("User1", "User1","user1@user1","1234");
-		
-		uService.createUser(user);
+//		com.unla.grupo03.model.User userAdmin = new com.unla.grupo03.model.User("Admin1", "Admin1","admin1@admin1","1234");			
+//
+//		uService.createAdmin(userAdmin);
+//		
+//		com.unla.grupo03.model.User user = new  com.unla.grupo03.model.User ("User1", "User1","user1@user1","1234");
+//		
+//		uService.createUser(user);
 		
 		}
 
