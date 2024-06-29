@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Stock {
 
+	private int id;
 	private List<StockProductos> stock;
 
 	public Stock() {}
@@ -11,6 +12,14 @@ public class Stock {
 	public Stock(List<StockProductos> stock) {
 		
 		this.stock = stock; 
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	protected void setId(int id) {
+		this.id = id;
 	}
 
 	public List<StockProductos> getStock() {
