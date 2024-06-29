@@ -44,7 +44,6 @@ public class User {
 
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="user", cascade = {CascadeType.ALL})
 	private Set<UserRol> userRoles = new HashSet<>();
-
 	
 	public User(String nombre, String apellido, String email, String password, Set<UserRol> userRoles) {
 
@@ -53,9 +52,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.userRoles = userRoles;
-	}
-	
-	
+	}	
 	
 	public User(String nombre, String apellido, String email, String password) {
 		
