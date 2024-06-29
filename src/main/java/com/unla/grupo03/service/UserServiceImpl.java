@@ -36,8 +36,7 @@ public class UserServiceImpl implements UserService {
 		user.addRol(rol);
 
 		return userRepo.save(user);
-	}
-	
+	}	
 
 	@Override
 	public boolean checkEmail(String email) {

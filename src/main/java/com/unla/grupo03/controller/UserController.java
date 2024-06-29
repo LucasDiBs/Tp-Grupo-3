@@ -29,13 +29,6 @@ public class UserController {
 		User user = userRepo.findByEmail(email);
 		m.addAttribute("user", user);
 	}
-
-	
-	@GetMapping("/clients")	
-	private String listarClientes(Model model) {		
-		model.addAttribute("clientes",service.listar());			
-		return "user/clients";
-	}
 	
 	@GetMapping("/")
 	public String home() {

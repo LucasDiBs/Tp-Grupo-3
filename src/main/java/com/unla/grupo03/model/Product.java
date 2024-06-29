@@ -34,7 +34,6 @@ public class Product {
 	@Column(name = "precioReposicion")
 	private double precioReposicion;
 	
-	
 	@Column(name = "cantidad")
 	private int cantidad;
 

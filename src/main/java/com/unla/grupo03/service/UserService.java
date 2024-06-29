@@ -14,9 +14,5 @@ public interface UserService {
 	public boolean checkEmail(String email);
 	
 	public User createAdmin(User user);
-	
-
-
-	
 
 }
