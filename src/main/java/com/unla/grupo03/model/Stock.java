@@ -4,24 +4,22 @@ import java.util.List;
 
 public class Stock {
 
-	private List<Lot> lotes;
+	private List<StockProductos> stock;
 
 	public Stock() {}
 
-	public Stock(List<Lot> lotes) {
-
-		this.lotes = lotes;
+	public Stock(List<StockProductos> stock) {
+		
+		this.stock = stock; 
 	}
 
-	public List<Lot> getLotes() {
-		return lotes;
+	public List<StockProductos> getStock() {
+		return stock;
 	}
 
-	public void setLotes(List<Lot> lotes) {
-		this.lotes = lotes;
+	public void setStock(List<StockProductos> stock) {
+		this.stock = stock;
 	}
-	
-	
-	
+
 	
 }
