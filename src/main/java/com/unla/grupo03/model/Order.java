@@ -35,12 +35,14 @@ public class Order {
 	
 	@Column(name = "proveedor",nullable=false, length=45)
 	private String proveedor;
+	
+	@Column(name = "estado", length=15)
+	private String estado;
 
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", producto=" + producto + ", cantidadPedida=" + cantidadPedida + ", fecha=" + fecha
-				+ ", proveedor=" + proveedor + "]";
+				+ ", proveedor=" + proveedor + ", estado=" + estado + "]";
 	}
 		
-	
 }
