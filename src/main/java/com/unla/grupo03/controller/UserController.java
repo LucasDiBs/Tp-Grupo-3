@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
@@ -35,4 +37,35 @@ public class UserController {
 		
 		return "user/home";
 	}
+	
+	@GetMapping("/usuario/{id}")
+	private String traerUsuarioPorId(@PathVariable int id, Model m) {				
+		m.addAttribute("user", service.traerUserPorId(id));
+		return "user/usuario";
+	}
+	
+	
+	@GetMapping("/user/editarUsuario/{id}")
+	public String formularioDeEdicionUser(@PathVariable int id, Model modelo) {
+		
+		modelo.addAttribute("user", service.traerUserPorId(id));
+		return "/editarUsuario";
+	}
+	
+
+	
+	
+	@PostMapping("/user/editarUsuario/{id}")
+	public String actualizarUser(@PathVariable int id, @ModelAttribute("user") User user, Model modelo) {
+		User auxUser = service.traerUserPorId(id);
+		
+		auxUser.setId(id);
+		auxUser.setNombre(user.getNombre());
+		auxUser.setApellido(user.getApellido());
+		auxUser.setEmail(user.getEmail());
+		auxUser.setPassword(user.getPassword());
+		
+		return "redirect: /user/";
+	}
+	
 }

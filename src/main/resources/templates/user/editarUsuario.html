@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Registro</title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#">Gestión de Usuarios</a> 
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="/user/">Home</a>
+	        </li>
+	        
+	        <li class="nav-item"><a th:href="@{/user/usuario/{id}(id=${user.id})}" th:text="${user.nombre}"></a></li>
+	        			
+			<li class="nav-item"><a class="nav-link" th:href="productos">Productos</a></li>
+			
+		
+				
+	      </ul>
+
+	    </div>
+	  </div>
+	</nav>
+	
+	<section>
+		<div class="container p-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+					<div class="card-header text-center fs-4">Pagina de Registro</div>
+					
+						<th:block th:if="${session.msg}">
+							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+							
+							<th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+							         						
+						</th:block>
+						
+						<div class="card-body">	
+												
+						<form th:action="@{/user/{id}(id=${user.id})}" th:object="user"  method="post">
+							<div class="mb-3">
+								<label>Ingrese Nombre</label>
+								<input type="text" name="nombre" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label>Ingrese Apellido</label>
+									<input type="text" name="apellido" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label>Ingrese Email</label>
+									<input type="text" name="email" class="form-control">
+							</div>
+							<div class="mb-3">
+								<label>Ingrese Password</label>
+									<input type="password" name="password" class="form-control">
+							</div>
+							
+							<button class="btn btn-primary col-md-12">Registrarse</button>
+							
+						</form> 						
+						
+						</div>
+					</div>					
+				</div>
+			</div>			
+		</div>	
+		
+	</section>
+
+
+
+
+
+</body>
+
+</html>

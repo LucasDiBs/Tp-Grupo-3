@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -51,6 +52,14 @@ public class AdminController {
 		model.addAttribute("clientes",uService.listar());			
 		return "admin/clients";
 	}
+	
+	@GetMapping("/usuario/{id}")
+	private String traerUsuarioPorId(@PathVariable int id, Model m) {				
+		m.addAttribute("user", uService.traerUserPorId(id));
+		return "admin/usuario";
+	}
+	
+	
 	
 	@GetMapping("/productos")	
 	private String listarProductos(Model model) {		

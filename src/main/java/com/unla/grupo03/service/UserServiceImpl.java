@@ -2,6 +2,7 @@ package com.unla.grupo03.service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -60,6 +61,24 @@ public class UserServiceImpl implements UserService {
 		user.addRol(rol);
 
 		return userRepo.save(user);
+	}
+
+	@Override
+	public User editarUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepo.save(user);
+	}
+
+	@Override
+	public User traerUserPorId(int id) {
+		// TODO Auto-generated method stub
+		return userRepo.findById(id).get();
+	}
+
+	@Override
+	public void eliminarUser(int id) {
+		userRepo.deleteById(id);
+		
 	}
 
 
