@@ -1,5 +1,7 @@
 package com.unla.grupo03.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,13 +23,17 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "proveedor",nullable=false,length=45)
-	private String proveedor;
-	
-	@Column(name = "cantidadPedida")
-	private int cantidadPedida;
-	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idUser",nullable=false)
+	@JoinColumn(name="id_producto", nullable=false)
 	private Product producto;
+
+	@Column(name = "cantidadPedida")
+	private int cantidadPedida;	
+	
+	@Column(name = "fecha")
+	private LocalDate fecha;
+	
+	@Column(name = "proveedor",nullable=false, length=45)
+	private String proveedor;
+		
 }
