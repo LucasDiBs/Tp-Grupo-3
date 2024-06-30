@@ -146,7 +146,8 @@ public class AdminController {
 			Product prod = product.get();
 			
 			pedido.setProducto(prod);
-			pedido.setFecha(LocalDate.now());		
+			pedido.setFecha(LocalDate.now());
+			pedido.setEstado("Procesando");
 		
 			System.out.println(pedido);
 		}
