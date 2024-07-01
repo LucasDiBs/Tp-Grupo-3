@@ -1,6 +1,8 @@
 package com.unla.grupo03.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,12 @@ public class OrderServiceImpl implements OrderService{
 	public Order crearPedido(Order pedido) {
 		// TODO Auto-generated method stub		
 		return orderRepo.save(pedido);
+	}
+
+	@Override
+	public List<Order> listarPedidos() {
+		// TODO Auto-generated method stub
+		return orderRepo.findAll();
 	}
 
 }

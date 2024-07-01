@@ -2,10 +2,10 @@ package com.unla.grupo03.controller;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -142,7 +142,8 @@ public class AdminController {
 		//buscar el producto con el id = id_producto
 		Optional<Product> product = service.buscarPorId(id_producto);
 		
-		if(product.isPresent()) { //chequeo por si acaso nolo encuentra
+		//chequeo por si acaso no lo encuentra
+		if(product.isPresent()) { 
 			Product prod = product.get();
 			
 			pedido.setProducto(prod);
@@ -162,7 +163,16 @@ public class AdminController {
 		return "admin/nuevoPedido";
 	}
 	
-	
-	
+	//////////////////////////////
+	//metodo para listar los pedidos (clase Order)
+	@GetMapping("/listarPedidos")
+	public String listarPedidos(Model modelo) {
+		
+		List<Order> pedidos = orderService.listarPedidos();
+		modelo.addAttribute("pedidos", pedidos);		
+		
+		return "admin/listarPedidos";
+	}
 
+	//////////////////////////////
 }
