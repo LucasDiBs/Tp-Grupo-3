@@ -172,27 +172,48 @@ public class AdminController {
 		return "admin/listarPedidos";
 	}
 	//////////////////////////////
+	
+	//////////////////////////////
 	//metodos para modificar un pedido: proveedor, estado, etc.
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable int id, Model modelo) {
 		
 		Optional<Order> optionalPedido = orderService.traerPedido(id);
+		Order pedido = null;
+		int id_product = 0;
+		
 		
 		if(optionalPedido.isPresent()) {
-			Order pedido = optionalPedido.get();
-				
+			pedido = optionalPedido.get();
+			id_product = pedido.getProducto().getId();	
+			
 			modelo.addAttribute("pedido", pedido);
-		}
-		
+			modelo.addAttribute("id_product", id_product);
+		}		
+		System.out.println(pedido);
 		return "admin/formEditarPedido";
+
 	}
 	
-	@PostMapping("/formEditarPedido")
-	public String actualizarPedido(@ModelAttribute("pedido") Order pedido) {
+	@PostMapping("/editar")
+	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("id_product") Integer id_product, HttpSession session) {
 		
+		System.out.println(pedido);
+		System.out.println("id prod " + id_product);
+		Optional<Product> oProducto = service.buscarPorId(id_product);
 		
+		pedido.setProducto(oProducto.get());
 		
-		return "admin/listarPedidos";
+		System.out.println(pedido);
+		//enviar a la bd para actualizar
+//		Order pedidoAux = orderService.crearPedido(pedido);
+//		
+//		if(pedidoAux != null)
+//			session.setAttribute("msg", "Registro exitoso");
+//		else
+//			session.setAttribute("msg", "Algo salio mal");		
+		
+		return "redirect:/admin/listarPedidos";
 	}
 	//////////////////////////////
 }

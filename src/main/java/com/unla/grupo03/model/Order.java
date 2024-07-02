@@ -2,6 +2,8 @@ package com.unla.grupo03.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,6 +32,8 @@ public class Order {
 	@Column(name = "cantidadPedida")
 	private int cantidadPedida;	
 	
+	//para las fechas
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "fecha")
 	private LocalDate fecha;
 	
