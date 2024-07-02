@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 
 import com.unla.grupo03.model.User;
 import com.unla.grupo03.repository.UserRepository;
+import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.UserService;
 
 @Controller
@@ -24,6 +25,9 @@ public class UserController {
 		
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private ProductService pruductService;
 	
 	@ModelAttribute
 	private void userDetalles(Model m, Principal p) {
@@ -45,27 +49,33 @@ public class UserController {
 	}
 	
 	
-	@GetMapping("/user/editarUsuario/{id}")
-	public String formularioDeEdicionUser(@PathVariable int id, Model modelo) {
-		
+	@GetMapping("/editarUsuario/{id}")
+	public String formularioDeEdicionUser(@PathVariable int id, Model modelo) {		
 		modelo.addAttribute("user", service.traerUserPorId(id));
-		return "/editarUsuario";
+		return "/user/editarUsuario";
 	}
-	
 
 	
 	
-	@PostMapping("/user/editarUsuario/{id}")
+	@PostMapping("/editarUsuario/{id}")
 	public String actualizarUser(@PathVariable int id, @ModelAttribute("user") User user, Model modelo) {
 		User auxUser = service.traerUserPorId(id);
 		
 		auxUser.setId(id);
 		auxUser.setNombre(user.getNombre());
 		auxUser.setApellido(user.getApellido());
-		auxUser.setEmail(user.getEmail());
-		auxUser.setPassword(user.getPassword());
-		
-		return "redirect: /user/";
+		auxUser.setEmail(user.getEmail());		
+		service.editarUser(auxUser);
+		return "/user/home";
 	}
+	
+	
+	@GetMapping("/eliminarUsuario/{id}")
+	public String eliminarUsuario(@PathVariable int id, Model modelo) {		
+	
+		service.eliminarUser(id);
+		return "redirect: /";
+	}
+	
 	
 }

@@ -34,8 +34,8 @@ public class Grupo03Application   implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		/*
-		Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3);
+		
+		/*Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3);
 		repositorio.save(producto1);
 		
 		Product producto2 = new Product("Sacapuntas", "Sacapuntas Verde", (double)35,(double)20,22,3);
@@ -50,14 +50,11 @@ public class Grupo03Application   implements CommandLineRunner{
 		Product producto5 = new Product("Mochila", "Mochila Grande",  (double)500,(double)250,10,3);
 		repositorio.save(producto4);
 		
-		com.unla.grupo03.model.User userAdmin = new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234");			
-
-		uService.createAdmin(userAdmin);
-		
-		com.unla.grupo03.model.User user = new  com.unla.grupo03.model.User ("User", "User","user@user","1234");
-		
-		uService.createUser(user);
+		uService.createAdmin(new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234"));		
 		*/
+		uService.createUser( new  com.unla.grupo03.model.User ("User", "User","user@user","1234"));
+		
+		
 		}
 
 }
