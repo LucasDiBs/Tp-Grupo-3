@@ -2,7 +2,6 @@ package com.unla.grupo03.service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +28,9 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public Optional<Order> traerPedido(int id) {
+	public Order traerPedido(int id) {
 		// TODO Auto-generated method stub
-		return orderRepo.findById(id);
+		return orderRepo.findById(id).get();
 	}
 
 }

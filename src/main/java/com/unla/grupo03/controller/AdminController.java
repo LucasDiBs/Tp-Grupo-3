@@ -3,7 +3,6 @@ package com.unla.grupo03.controller;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -140,16 +139,12 @@ public class AdminController {
 	public String crearPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("id_producto") Integer id_producto, HttpSession session) {
 		
 		//buscar el producto con el id = id_producto
-		Optional<Product> product = service.buscarPorId(id_producto);
+		Product product = service.buscarPorId(id_producto);
 		
-		//chequeo por si acaso no lo encuentra
-		if(product.isPresent()) { 
-			Product prod = product.get();
-			
-			pedido.setProducto(prod);
-			pedido.setFecha(LocalDate.now());
-			pedido.setEstado("Procesando");
-		}
+		pedido.setProducto(product);
+		pedido.setFecha(LocalDate.now());
+		pedido.setEstado("Procesando");
+
 		//enviar al servicio que lo escriba en la bd		
 		Order pedidoAux = orderService.crearPedido(pedido);		
 		
@@ -178,40 +173,37 @@ public class AdminController {
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable int id, Model modelo) {
 		
-		Optional<Order> optionalPedido = orderService.traerPedido(id);
-		Order pedido = null;
-		int id_product = 0;
+		Order pedido = orderService.traerPedido(id);
+		int idProducto = pedido.getProducto().getId();
 		
-		
-		if(optionalPedido.isPresent()) {
-			pedido = optionalPedido.get();
-			id_product = pedido.getProducto().getId();	
-			
-			modelo.addAttribute("pedido", pedido);
-			modelo.addAttribute("id_product", id_product);
-		}		
+		modelo.addAttribute("pedido", pedido);
+		modelo.addAttribute("idProducto", idProducto);
+	
 		System.out.println(pedido);
+//		System.out.println(pedido.getProducto().getId());
+		
 		return "admin/formEditarPedido";
-
 	}
 	
 	@PostMapping("/editar")
-	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("id_product") Integer id_product, HttpSession session) {
+	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("idProducto") Integer idProducto, HttpSession session) {
 		
 		System.out.println(pedido);
-		System.out.println("id prod " + id_product);
-		Optional<Product> oProducto = service.buscarPorId(id_product);
+		//System.out.println(idProducto);
+		Product producto = service.buscarPorId(idProducto);
 		
-		pedido.setProducto(oProducto.get());
+		pedido.setProducto(producto);
+		//pedido.setProducto(producto);
 		
 		System.out.println(pedido);
+		
 		//enviar a la bd para actualizar
-//		Order pedidoAux = orderService.crearPedido(pedido);
-//		
-//		if(pedidoAux != null)
-//			session.setAttribute("msg", "Registro exitoso");
-//		else
-//			session.setAttribute("msg", "Algo salio mal");		
+		Order pedidoAux = orderService.crearPedido(pedido);
+		
+		if(pedidoAux != null)
+			session.setAttribute("msg", "Registro exitoso");
+		else
+			session.setAttribute("msg", "Algo salio mal");		
 		
 		return "redirect:/admin/listarPedidos";
 	}

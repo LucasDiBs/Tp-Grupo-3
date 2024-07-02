@@ -1,7 +1,6 @@
 package com.unla.grupo03.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -40,9 +39,9 @@ public class ProductServiceImpl implements ProductService{
 
 
 	@Override
-	public Optional<Product> buscarPorId(Integer id_producto) {
+	public Product buscarPorId(int id_producto) {
 		// TODO Auto-generated method stub
-		return productRepo.findById(id_producto);
+		return productRepo.findById(id_producto).get();
 	}
 	
 }
