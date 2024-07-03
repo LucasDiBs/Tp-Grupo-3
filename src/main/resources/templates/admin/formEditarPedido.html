@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  
+</head>
+
+<body>
+	
+	<div class="container p-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center fs-4">Modificar Pedido</div>
+	
+						<th:block th:if="${session.msg}">
+							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+	
+							<th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+	
+						</th:block>
+	
+						<div class="card-body">
+	
+							<form th:action="@{/admin/editar}" th:object="${pedido}" method="post">
+	
+								<div class="form-group">
+									<br>
+									
+									<!--<label>Id Pedido  [[${pedido.id}]] (no se puede modificar)</label>-->
+									<input type="hidden" name="id" th:field="*{id}" class="form-control">
+									
+									<label>Id Producto (originalmente el id es [[${idProducto}]])</label>
+									<input type="number" name="idProducto" class="form-control" placeholder="Id del Producto">									
+									<br>									
+									<label>Cantidad a pedir</label>
+									<input type="number" name="cantidadPedida" th:field="*{cantidadPedida}"	class="form-control">
+									<br>	
+									<label>Proveedor</label>
+									<input type="text" name="proveedor" th:field="*{proveedor}" class="form-control">
+									<br>
+									<label>Fecha</label>
+									<input type="date" name="fecha" th:field="*{fecha}" class="form-control">
+									<br>
+									<label>Estado</label>
+									<input type="text" name="estado" th:field="*{estado}" class="form-control">
+	
+								</div>
+								<br>
+	
+								<button class="btn- btn-primary">Pedir</button>
+	
+							</form>
+						</div>
+	
+					</div>
+				</div>
+	
+			</div>
+		</div>
+</body>
+</html>

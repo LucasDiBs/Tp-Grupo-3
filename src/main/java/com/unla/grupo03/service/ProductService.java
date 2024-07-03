@@ -11,5 +11,7 @@ public interface ProductService {
 	public Product crearProducto(Product producto);
 	
 	public void delete(int id);
+
+	public Product buscarPorId(int id_producto);
 	
 }

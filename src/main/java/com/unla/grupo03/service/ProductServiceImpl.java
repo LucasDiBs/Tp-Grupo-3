@@ -1,8 +1,8 @@
 package com.unla.grupo03.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo03.model.Product;
@@ -21,7 +21,6 @@ public class ProductServiceImpl implements ProductService{
 		return productRepo.findAll();
 	}
 
-
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
@@ -34,6 +33,13 @@ public class ProductServiceImpl implements ProductService{
 	public Product crearProducto(Product producto) {
 		// TODO Auto-generated method stub
 		return productRepo.save(producto);
+	}
+
+
+	@Override
+	public Product buscarPorId(int id_producto) {
+		// TODO Auto-generated method stub
+		return productRepo.findById(id_producto).get();
 	}
 	
 }

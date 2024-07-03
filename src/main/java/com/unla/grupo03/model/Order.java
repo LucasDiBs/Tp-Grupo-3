@@ -1,5 +1,9 @@
 package com.unla.grupo03.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,13 +25,28 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "proveedor",nullable=false,length=45)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_producto", nullable=false)
+	private Product producto;
+
+	@Column(name = "cantidadPedida")
+	private int cantidadPedida;	
+	
+	//para las fechas
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "fecha")
+	private LocalDate fecha;
+	
+	@Column(name = "proveedor",nullable=false, length=45)
 	private String proveedor;
 	
-	@Column(name = "cantidadPedida")
-	private int cantidadPedida;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="idUser",nullable=false)
-	private Product producto;
+	@Column(name = "estado", length=15)
+	private String estado;
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", producto=" + producto + ", cantidadPedida=" + cantidadPedida + ", fecha=" + fecha
+				+ ", proveedor=" + proveedor + ", estado=" + estado + "]";
+	}
+		
 }

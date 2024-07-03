@@ -19,7 +19,7 @@ import com.unla.grupo03.service.UserServiceImpl;
 
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
-public class Grupo03Application   implements CommandLineRunner{
+public class Grupo03Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Grupo03Application.class, args);
@@ -31,7 +31,6 @@ public class Grupo03Application   implements CommandLineRunner{
 	@Autowired
 	UserServiceImpl uService;
 	
-	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -55,6 +54,7 @@ public class Grupo03Application   implements CommandLineRunner{
 		uService.createUser( new  com.unla.grupo03.model.User ("User", "User","user@user","1234"));
 		
 		*/
-		}
-
+	}
 }
+
+
