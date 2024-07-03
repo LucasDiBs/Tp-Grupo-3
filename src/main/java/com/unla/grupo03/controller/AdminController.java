@@ -209,6 +209,15 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}	
+	//////////////////////////////
 	
 	//////////////////////////////
+	//para redireccionar
+	@GetMapping("/atras")
+	public String redireccionAdminHome() {
+		
+		return "redirect:/admin/";
+	}	
+	//////////////////////////////
+		
 }
