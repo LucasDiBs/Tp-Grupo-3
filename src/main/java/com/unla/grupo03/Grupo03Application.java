@@ -51,10 +51,10 @@ public class Grupo03Application   implements CommandLineRunner{
 		repositorio.save(producto4);
 		
 		uService.createAdmin(new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234"));		
-		*/
+		
 		uService.createUser( new  com.unla.grupo03.model.User ("User", "User","user@user","1234"));
 		
-		
+		*/
 		}
 
 }
