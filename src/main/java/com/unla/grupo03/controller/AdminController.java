@@ -59,6 +59,14 @@ public class AdminController {
 		return "admin/clients";
 	}
 	
+	@GetMapping("/usuario/{id}")
+	private String traerUsuarioPorId(@PathVariable int id, Model m) {				
+		m.addAttribute("user", uService.traerUserPorId(id));
+		return "admin/usuario";
+	}
+	
+	
+	
 	@GetMapping("/productos")	
 	private String listarProductos(Model model) {		
 		model.addAttribute("productos",service.listar());			

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.service.ProductService;
+import com.unla.grupo03.service.UserService;
 
 @Controller
 @RequestMapping("user/productos")
@@ -24,6 +25,9 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
+	@Autowired
+	private UserService uService;
+	
 	@ModelAttribute
 	@GetMapping({"", "/"})	
 	private String listarProduct(Model model) {
@@ -31,6 +35,5 @@ public class ProductController {
 		model.addAttribute("productos", service.listar());			
 		return "productos";
 	}
-	
 	
 }
