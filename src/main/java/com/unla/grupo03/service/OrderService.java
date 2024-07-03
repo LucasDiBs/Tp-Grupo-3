@@ -10,7 +10,7 @@ public interface OrderService {
 	
 	public List<Order> listarPedidos();
 	
-	//public Optional<Order> traerPedido(int id);
-	
 	public Order traerPedido(int id);
+	
+	public void eliminarPedido(int id);
 }

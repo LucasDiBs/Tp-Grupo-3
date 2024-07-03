@@ -33,4 +33,11 @@ public class OrderServiceImpl implements OrderService{
 		return orderRepo.findById(id).get();
 	}
 
+	@Override
+	public void eliminarPedido(int id) {
+		// TODO Auto-generated method stub
+		orderRepo.deleteById(id);
+		
+	}
+
 }

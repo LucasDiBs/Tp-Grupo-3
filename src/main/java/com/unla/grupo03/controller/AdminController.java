@@ -178,9 +178,6 @@ public class AdminController {
 		
 		modelo.addAttribute("pedido", pedido);
 		modelo.addAttribute("idProducto", idProducto);
-	
-		System.out.println(pedido);
-//		System.out.println(pedido.getProducto().getId());
 		
 		return "admin/formEditarPedido";
 	}
@@ -188,15 +185,9 @@ public class AdminController {
 	@PostMapping("/editar")
 	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("idProducto") Integer idProducto, HttpSession session) {
 		
-		System.out.println(pedido);
-		//System.out.println(idProducto);
 		Product producto = service.buscarPorId(idProducto);
-		
 		pedido.setProducto(producto);
-		//pedido.setProducto(producto);
-		
-		System.out.println(pedido);
-		
+	
 		//enviar a la bd para actualizar
 		Order pedidoAux = orderService.crearPedido(pedido);
 		
@@ -207,5 +198,17 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}
+	//////////////////////////////
+	
+	//////////////////////////////
+	//metoods para borrar un pedido de la bd
+	@GetMapping("/eliminar/{id}")
+	public String borrarPedido(@PathVariable int id) {
+		
+		orderService.eliminarPedido(id);
+		
+		return "redirect:/admin/listarPedidos";
+	}	
+	
 	//////////////////////////////
 }
