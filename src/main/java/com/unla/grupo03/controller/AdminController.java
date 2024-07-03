@@ -174,9 +174,8 @@ public class AdminController {
 		
 		return "admin/listarPedidos";
 	}
-	//////////////////////////////
+
 	
-	//////////////////////////////
 	//metodos para modificar un pedido: proveedor, estado, etc.
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable int id, Model modelo) {
@@ -206,9 +205,8 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}
-	//////////////////////////////
+
 	
-	//////////////////////////////
 	//metoods para borrar un pedido de la bd
 	@GetMapping("/eliminar/{id}")
 	public String borrarPedido(@PathVariable int id) {
@@ -217,15 +215,13 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}	
-	//////////////////////////////
-	
-	//////////////////////////////
+
 	//para redireccionar
 	@GetMapping("/atras")
 	public String redireccionAdminHome() {
 		
 		return "redirect:/admin/";
 	}	
-	//////////////////////////////
+
 		
 }

@@ -25,13 +25,11 @@ public class Grupo03Application {
 		SpringApplication.run(Grupo03Application.class, args);
 	}
 
-//	@Autowired
-//	ProductRepository repositorio;
-//	
-//	@Autowired
-//	UserServiceImpl uService;
-//	
-//	@Override
+
+	@Autowired
+	ProductRepository repositorio;
+	@Autowired
+	UserServiceImpl uService;
 
 
 		/*Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3);
@@ -55,3 +53,7 @@ public class Grupo03Application {
 		
 		*/
 }
+
+
+
+
