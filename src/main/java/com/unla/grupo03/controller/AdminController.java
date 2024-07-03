@@ -2,14 +2,14 @@ package com.unla.grupo03.controller;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -98,8 +98,7 @@ public class AdminController {
 		}	
 		
 			return "/admin/registro";
-	}
-	
+	}	
 	
 	@GetMapping("/nuevoProducto")
 	public String mostarProductoForm(Model modelo) {		
@@ -140,17 +139,12 @@ public class AdminController {
 	public String crearPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("id_producto") Integer id_producto, HttpSession session) {
 		
 		//buscar el producto con el id = id_producto
-		Optional<Product> product = service.buscarPorId(id_producto);
+		Product product = service.buscarPorId(id_producto);
 		
-		if(product.isPresent()) { //chequeo por si acaso nolo encuentra
-			Product prod = product.get();
-			
-			pedido.setProducto(prod);
-			pedido.setFecha(LocalDate.now());
-			pedido.setEstado("Procesando");
-		
-			System.out.println(pedido);
-		}
+		pedido.setProducto(product);
+		pedido.setFecha(LocalDate.now());
+		pedido.setEstado("Procesando");
+
 		//enviar al servicio que lo escriba en la bd		
 		Order pedidoAux = orderService.crearPedido(pedido);		
 		
@@ -162,7 +156,68 @@ public class AdminController {
 		return "admin/nuevoPedido";
 	}
 	
+	//////////////////////////////
+	//metodo para listar los pedidos (clase Order)
+	@GetMapping("/listarPedidos")
+	public String listarPedidos(Model modelo) {
+		
+		List<Order> pedidos = orderService.listarPedidos();
+		modelo.addAttribute("pedidos", pedidos);		
+		
+		return "admin/listarPedidos";
+	}
+	//////////////////////////////
 	
+	//////////////////////////////
+	//metodos para modificar un pedido: proveedor, estado, etc.
+	@GetMapping("/editar/{id}")
+	public String editar(@PathVariable int id, Model modelo) {
+		
+		Order pedido = orderService.traerPedido(id);
+		int idProducto = pedido.getProducto().getId();
+		
+		modelo.addAttribute("pedido", pedido);
+		modelo.addAttribute("idProducto", idProducto);
+		
+		return "admin/formEditarPedido";
+	}
 	
-
+	@PostMapping("/editar")
+	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("idProducto") Integer idProducto, HttpSession session) {
+		
+		Product producto = service.buscarPorId(idProducto);
+		pedido.setProducto(producto);
+	
+		//enviar a la bd para actualizar
+		Order pedidoAux = orderService.crearPedido(pedido);
+		
+		if(pedidoAux != null)
+			session.setAttribute("msg", "Registro exitoso");
+		else
+			session.setAttribute("msg", "Algo salio mal");		
+		
+		return "redirect:/admin/listarPedidos";
+	}
+	//////////////////////////////
+	
+	//////////////////////////////
+	//metoods para borrar un pedido de la bd
+	@GetMapping("/eliminar/{id}")
+	public String borrarPedido(@PathVariable int id) {
+		
+		orderService.eliminarPedido(id);
+		
+		return "redirect:/admin/listarPedidos";
+	}	
+	//////////////////////////////
+	
+	//////////////////////////////
+	//para redireccionar
+	@GetMapping("/atras")
+	public String redireccionAdminHome() {
+		
+		return "redirect:/admin/";
+	}	
+	//////////////////////////////
+		
 }
