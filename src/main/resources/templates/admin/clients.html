@@ -22,12 +22,12 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/admin/">Home</a>
 	        </li>
-			<li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
-	         <li class="nav-item"><a class="nav-link" href="registro">Registrar Administrador</a></li>		
+	   <li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
+	       <li class="nav-item"><a class="nav-link" th:href="@{/admin/registro}">Registrar Administrador</a></li>	
 			<li class="nav-item"><a class="nav-link" href="clients">Clientes</a></li>
 			<li class="nav-item"><a class="nav-link" href="productos">Productos</a></li>
-			<li class="nav-item"><a class="nav-link" href="cargarProducto">Registrar Productos</a></li>
-	   
+			<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
+	   		
 	      </ul>
 
 	    </div>
@@ -46,6 +46,7 @@
 					<td>Apellido</td>
 					<td>Email</td>
 					<td>Rol</td>
+					<td>Editar</td>
 					
 				</tr>
 			</thead>
@@ -56,8 +57,10 @@
 					<td th:text="${cliente.nombre}">Nombre</td>
 					<td th:text="${cliente.apellido}">Apellido</td>					
 					<td th:text="${cliente.email}">Email</td>
-					<td th:text="${cliente.userRoles[0].rol}">Rol</td>	
+					<td th:text="${cliente.userRoles[0].rol}">Rol</td>
 					
+					<td> <a th:href="@{/admin/usuario/{id}(id=${cliente.id})}"class="btm btn-info">Editar</a>	</td>	
+										
 					
 				
 			</tbody>
