@@ -6,9 +6,10 @@
   <meta charset="utf-8">
   
 </head>
-<p>Esta página es para editar pedidos.</p>
+
 <body>
-	<div class="container">
+	
+	<div class="container p-3">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
 					<div class="card">
@@ -28,12 +29,11 @@
 								<div class="form-group">
 									<br>
 									
-									<label>Id Pedido  [[${pedido.id}]] (no se puede modificar)</label>
+									<!--<label>Id Pedido  [[${pedido.id}]] (no se puede modificar)</label>-->
 									<input type="hidden" name="id" th:field="*{id}" class="form-control">
-									<br>
-									<br>
-									<label>Id Producto (oginalmente es el id [[${idProducto}]])</label>
-									<input type="number" name="idProducto" value="0" class="form-control">									
+									
+									<label>Id Producto (originalmente el id es [[${idProducto}]])</label>
+									<input type="number" name="idProducto" class="form-control" placeholder="Id del Producto">									
 									<br>									
 									<label>Cantidad a pedir</label>
 									<input type="number" name="cantidadPedida" th:field="*{cantidadPedida}"	class="form-control">
