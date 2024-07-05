@@ -1,6 +1,7 @@
 package com.unla.grupo03.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
+import com.unla.grupo03.model.Order;
+import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.User;
+import com.unla.grupo03.modelDTO.ProductDTO;
 import com.unla.grupo03.repository.UserRepository;
 import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.UserService;
@@ -27,7 +31,7 @@ public class UserController {
 	private UserService service;
 	
 	@Autowired
-	private ProductService pruductService;
+	private ProductService productService;
 	
 	@ModelAttribute
 	private void userDetalles(Model m, Principal p) {
@@ -76,6 +80,26 @@ public class UserController {
 		service.eliminarUser(id);
 		return "redirect: /";
 	}
+
+	//////////////////////////////
+	@GetMapping("/mostrarProductos")
+	public String listarProductosParaComprar(Model modelo) {
+		
+		System.out.println("Lista de productos a vender");
+		
+		modelo.addAttribute("listaDto", productService.listarDto());
+		
+		return "user/mostrarProductos";
+	}
+	//////////////////////////////
+	@GetMapping("/comprar/{id}")
+	public String comprarProducto(@PathVariable int id) {
+		
+		System.out.println(productService.buscarPorId(id));
+		
+		return "user/comprar";
+	}
 	
-	
+	////////////////////////////
+
 }
