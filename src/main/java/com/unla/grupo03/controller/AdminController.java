@@ -152,6 +152,8 @@ public class AdminController {
 		pedido.setProducto(product);
 		pedido.setFecha(LocalDate.now());
 		pedido.setEstado("Procesando");
+		
+		pedido.setCostoPedido(pedido.getCantidadPedida() * product.getPrecioReposicion());
 
 		//enviar al servicio que lo escriba en la bd		
 		Order pedidoAux = orderService.crearPedido(pedido);		

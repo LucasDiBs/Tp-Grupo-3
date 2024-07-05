@@ -36,6 +36,7 @@
 					<th>Cantidad a Pedir</th>
 					<th>Fecha</th>
 					<th>Proveedor</th>
+					<th>Costo</th>
 					<th>Estado</th>
 					<th>Acciones</th>
 				</tr>
@@ -48,6 +49,7 @@
 					<td th:text="${pedido.cantidadPedida}"></td>
 					<td th:text="${pedido.fecha}"></td>
 					<td th:text="${pedido.proveedor}"></td>
+					<td th:text="${pedido.costoPedido}"></td>
 					<td th:text="${pedido.estado}"></td>
 					<td>
 						<a th:href="@{/admin/editar/}+${pedido.id}" class="btn btn-warning">Editar</a>
