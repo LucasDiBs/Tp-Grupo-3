@@ -27,7 +27,9 @@
 	        	
 	        <li class="nav-item"><a class="nav-link" th:href="@{/user/usuario/{id}(id=${user.id})}"  th:text="${user.nombre}"></a></li>	
 	        			
-		<li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>	
+		<li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>
+		
+		<li class="nav-item"><a class="nav-link"  href="/logout">Salir</a></li>		
 		
 				
 	      </ul>
@@ -39,6 +41,6 @@
 	
 	
 	
-	<a href="/logout">Salir</a>
+	
 </body>
 </html>

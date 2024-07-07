@@ -78,7 +78,7 @@ public class UserController {
 	public String eliminarUsuario(@PathVariable int id, Model modelo) {		
 	
 		service.eliminarUser(id);
-		return "redirect: /";
+		return "redirect: /logout";
 	}
 
 	//////////////////////////////
