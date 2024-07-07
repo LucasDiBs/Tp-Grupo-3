@@ -7,5 +7,6 @@ import com.unla.grupo03.model.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
+	
 
 }

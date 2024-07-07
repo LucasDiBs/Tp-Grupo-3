@@ -43,10 +43,7 @@ public class Order {
 	@Column(name = "estado", length=15)
 	private String estado;
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", producto=" + producto + ", cantidadPedida=" + cantidadPedida + ", fecha=" + fecha
-				+ ", proveedor=" + proveedor + ", estado=" + estado + "]";
-	}
+	@Column(name = "costoPedido")
+	private double costoPedido;
 		
 }

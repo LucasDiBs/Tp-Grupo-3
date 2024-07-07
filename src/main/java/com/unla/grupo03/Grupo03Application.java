@@ -25,12 +25,10 @@ public class Grupo03Application {
 		SpringApplication.run(Grupo03Application.class, args);
 	}
 
-
 	@Autowired
 	ProductRepository repositorio;
 	@Autowired
 	UserServiceImpl uService;
-
 
 		/*Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3);
 		repositorio.save(producto1);
@@ -52,6 +50,7 @@ public class Grupo03Application {
 		uService.createUser( new  com.unla.grupo03.model.User ("User", "User","user@user","1234"));
 		
 		*/
+
 }
 
 

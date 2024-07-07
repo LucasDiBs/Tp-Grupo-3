@@ -1,11 +1,13 @@
 package com.unla.grupo03.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo03.model.Product;
+import com.unla.grupo03.modelDTO.ProductDTO;
 import com.unla.grupo03.repository.ProductRepository;
 
 @Service
@@ -40,6 +42,26 @@ public class ProductServiceImpl implements ProductService{
 	public Product buscarPorId(int id_producto) {
 		// TODO Auto-generated method stub
 		return productRepo.findById(id_producto).get();
+	}
+
+	@Override
+	public List<ProductDTO> listarDto() {
+		// TODO Auto-generated method stub
+		List<ProductDTO> listaDto = new ArrayList<ProductDTO>();
+		
+		for(Product producto: productRepo.findAll()) {
+			
+			ProductDTO prodDto = new ProductDTO();
+			
+			prodDto.setId(producto.getId());
+			prodDto.setNombre(producto.getNombre());
+			prodDto.setDescripcion(producto.getDescripcion());
+			prodDto.setPrecio(producto.getPrecio());
+			
+			listaDto.add(prodDto);	
+		}			
+			
+		return listaDto;
 	}
 	
 }
