@@ -177,7 +177,6 @@ public class AdminController {
 		return "admin/listarPedidos";
 	}
 
-	
 	//metodos para modificar un pedido: proveedor, estado, etc.
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable int id, Model modelo) {
