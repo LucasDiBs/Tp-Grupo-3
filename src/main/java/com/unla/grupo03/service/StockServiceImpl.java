@@ -20,6 +20,7 @@ public class StockServiceImpl implements StockService{
 		// TODO Auto-generated method stub
 		return stockRepo.save(s);
 	}
+	
 
 }
 
