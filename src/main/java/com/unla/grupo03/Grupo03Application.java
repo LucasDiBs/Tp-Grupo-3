@@ -58,10 +58,12 @@ public class Grupo03Application implements CommandLineRunner  {
 			
 			uService.createAdmin(admin);		
 			
-			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234");
+		
+	
+			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user1@user1","1234");
 			
 			uService.createUser(user);
-		*/
+	*/
 	}
 }
 

@@ -79,18 +79,25 @@
 										
 									<li class="list-group-item"> <a th:href="@{/user/editarUsuario/{id}(id=${user.id})}" class="btn btn-success col-md-12">Editar</a></li>										 								
 										
-										<li class="list-group-item"> <a th:href="@{/user/eliminarUsuario/{id}(id=${user.id})}" class="btn btn-danger col-md-12">Darse de Baja</a></li>								
+										<li class="list-group-item"> <a  th:action="@{/user/eliminarUsuario/{id}(id=${user.id})}" class="btn btn-danger col-md-12">Darse de Baja</a></li>								
 								</ul>
+								
+								
 
-							</div>		
-    				</form>
+							</div>	
+					    </form>
 
-				</div>
+
+					
+					</div>
 			</div>
 		</div>
 	</div>
-	</div>
-
+	</div>	
+	
+	
+	
+			
 </section>
 
 </body>

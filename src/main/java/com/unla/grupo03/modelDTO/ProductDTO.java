@@ -22,6 +22,8 @@ public class ProductDTO {
 	
 	private double precio;
 	
+	private double cantidad;
+	
 	public List<ProductDTO> convertirADto(List<Product> listaProductos){
 		
 		List<ProductDTO> listaDto = new ArrayList<ProductDTO>();
@@ -34,6 +36,7 @@ public class ProductDTO {
 			prodDto.setNombre(p.getNombre());
 			prodDto.setDescripcion(p.getDescripcion());
 			prodDto.setPrecio(p.getPrecio());
+			prodDto.setCantidad(p.getCantidad());
 			
 			listaDto.add(prodDto);	
 		}	

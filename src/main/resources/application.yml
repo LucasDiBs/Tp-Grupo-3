@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DB_URL}
-    username: ${USERNAME}
-    password: ${PASSWORD}
+    url: "${DB_URL}"
+    username: "${USERNAME}"
+    password: "${PASSWORD}"
   jpa:
     show-sql: false
     hibernate:
@@ -18,3 +18,10 @@ server:
   error:
     whitelabel: 
       enabled: false
+
+
+
+
+
+
+

@@ -87,7 +87,7 @@ public class UserController {
 		
 		System.out.println("Lista de productos a vender");
 		
-		modelo.addAttribute("listaDto", productService.listarDto());
+		modelo.addAttribute("listaDto", productService.listar());
 		
 		return "user/mostrarProductos";
 	}
