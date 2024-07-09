@@ -2,7 +2,6 @@ package com.unla.grupo03.model;
 
 import java.time.LocalDate;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -17,35 +16,33 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
-@ToString
-@Table(name = "compra")
-public class Purchase {
+@Table(name = "compra_usuario")
+public class Buy {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@CreationTimestamp
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fechaCompra")
-	private LocalDate fechaCompra;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_producto", nullable=false)
+	private Product producto;
 	
-	@Column(name = "cantidadCompra")
-	private int cantidadCompra;
+	@Column(name = "cantidad")
+	private int cantidad;
 	
 	@Column(name = "importe")
 	private double importe;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idProducto",nullable=false)
-	private Product producto;
+	//para las fechas
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "fecha")
+	private LocalDate fecha;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idUsuario",nullable=false)
+	@JoinColumn(name="id_user", nullable=false)
 	private User usuario;
-	
-	
+
 }

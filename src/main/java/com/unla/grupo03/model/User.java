@@ -97,7 +97,6 @@ public class User {
 		return roles.get(0);
 	}
 	
-	
 
 	
 }
