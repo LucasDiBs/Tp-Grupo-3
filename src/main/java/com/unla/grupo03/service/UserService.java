@@ -22,4 +22,6 @@ public interface UserService {
 	public User traerUserPorId(int id);
 	
 	public void eliminarUser(int id);
+	
+	public User traerUserPorEmail(String email);
 }

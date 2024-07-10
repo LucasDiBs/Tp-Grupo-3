@@ -20,7 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+
 @Table(name="user_rol", uniqueConstraints=@UniqueConstraint(columnNames= {"rol", "user_id"}))
 public class UserRol {
 	
@@ -47,7 +47,12 @@ public class UserRol {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "UserRol [id=" + id + ", rol=" + rol + "]";
+	}
+	
+	
 
 }

@@ -81,6 +81,12 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public User traerUserPorEmail(String email) {
+		// TODO Auto-generated method stub
+		return userRepo.findByEmail(email);
+	}
+
 
 
 }
