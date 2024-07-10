@@ -58,24 +58,17 @@
 					<td th:text="${productoDto.descripcion}">Descripcion</td>
 					<td th:text="${productoDto.precio}">Precio</td>
 					<td>
-						<a th:href="@{/user/comprar/}+${productoDto.id}" th:onClick="guardar([[${productoDto.nombre}]],[[${productoDto.precio}]],[[${productoDto.cantidad}]])" class="btn btn-success">Comprar</a>
+						<a th:href="@{/user/comprar/}+${productoDto.id}"  class="btn btn-success">Comprar</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	
-		<script>
-			function guardar(nombre,num1, num2){
+	<script>
 
-	var total = num1 * num2;
 
-	var mensaje=("El producto: " +nombre+"\n precio: "+ num1+"\n cantidad:"+num2+"\n total: "+total);
-	
-	window.confirm(mensaje);
-}
-
-				</script>
+	</script>
 	
 
 </body>
