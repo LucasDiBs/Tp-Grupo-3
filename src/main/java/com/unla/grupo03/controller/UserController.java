@@ -93,7 +93,9 @@ public class UserController {
 	}
 	//////////////////////////////
 	@GetMapping("/comprar/{id}")
-	public String comprarProducto(@PathVariable int id) {
+	public String comprarProducto(@PathVariable int id, Model m) {
+		
+		m.addAttribute("producto", productService.buscarPorId(id));
 		
 		System.out.println(productService.buscarPorId(id));
 		

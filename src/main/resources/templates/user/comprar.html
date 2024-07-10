@@ -11,6 +11,7 @@
 
 <body>
 
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="#">Gestión de Usuarios</a> 
@@ -32,37 +33,75 @@
 	  </div>
 	</nav>
   
+  <section>
+	<div class="container p-3">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-header text-center fs-4">
+							<legend>Datos del Producto</legend>
+					</div>
+
+					<th:block th:if="${session.msg}">
+						<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+						<th:block
+							th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+					</th:block>
+
+					<div class="card-body text-center">
+			<form th:action="@{user/ticket/ {id}(id=${user.id})}+${producto.id}" name="formCompra" th:object="${producto}" method="get">
+			
+							<div class="mb-3">
+							
+								<ul class="list-group list-group-flush">
+								
+												
+									<li class="list-group-item"><h5><label>Nombre: [[${producto.nombre}]]</label></h5></li>
+										
+											
+									<li class="list-group-item" ><h5><label>Descripcion: [[${producto.descripcion}]]</label></h5></li>
+									
+									<li class="list-group-item"> <h5><label>Precio de venta: [[${producto.precio}]]</label></h5></li>	
+										
+									<li class="list-group-item"> <h5><label>Cantidad: (maximo a comprar: [[${producto.cantidad}]])</h5></li>
+									
+										<input type="number" name="cantidadSolicitada" class="form-control "  style="text-align: center;"/>
+									
+										
+									<li class="list-group-item"><button class="btn btn-success col-md-6" th:onClick="comprar([[${producto.nombre}]],[[${producto.precio}]],document.formCompra.cantidadSolicitada.value)">Comprar</button></li>										 								
+										
+													
+								</ul>
+								
+								
+
+							</div>	
+					    </form>
 
 
-
-	<div class="card-body">
-		<form th:action="@{/user/ticket/}+${producto.id}" th:object="${producto}" method="get">
-			<fieldset>
-				<legend>Datos del Producto</legend>
-				<table>
-					<tr>
-						<td><label>Nombre: [[${producto.nombre}]]</label></td>
-					</tr>
-					<tr>
-						<td><label>Descripcion: [[${producto.descripcion}]]</label></td>
-					</tr>
-					<tr>
-						<td><label>Precio de venta: [[${producto.precio}]]</label></td>
-					</tr>
-					<tr>
-						<td><label>Cantidad: (maximo a comprar: [[${producto.cantidad}]])<input type="number" name="cantidadSolicitada" class="form-control" /></label>
-						</td>
-					</tr>
-				</table>
-			</fieldset>
-			<br>
-			<tr>
-				<td>
-					<button class="btn- btn-success">Comprar</button>
-				</td>
-			</tr>
-		</form>
+					
+					</div>
+			</div>
+		</div>
 	</div>
+	</div>	
+	<script>
+			function comprar(nombre,num1, num2){
+
+	var total = num1 * num2;
+
+	var mensaje=("Producto: " +nombre+"\n precio: "+ num1+"\n cantidad: "+num2+"\n total: "+total);
+	
+	window.alert(mensaje);
+}
+
+				</script>
+	
+	
+			
+</section>
+
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
