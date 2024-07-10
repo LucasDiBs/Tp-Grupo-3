@@ -50,7 +50,7 @@
 					</th:block>
 
 					<div class="card-body text-center">
-			<form th:action="@{user/ticket/ {id}(id=${user.id})}+${producto.id}" name="formCompra" th:object="${producto}" method="get">
+			<form th:action="@{/user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}" method="get">
 			
 							<div class="mb-3">
 							
