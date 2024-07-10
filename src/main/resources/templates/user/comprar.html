@@ -69,7 +69,7 @@
 										<input type="number" name="cantidadSolicitada" class="form-control "  style="text-align: center;"/>
 									
 										
-									<li class="list-group-item"><button class="btn btn-success col-md-6" th:onClick="comprar([[${producto.nombre}]],[[${producto.precio}]],document.formCompra.cantidadSolicitada.value)">Comprar</button></li>										 								
+									<li class="list-group-item"><button class="btn btn-success col-md-6">Comprar</button></li>										 								
 										
 													
 								</ul>
@@ -86,17 +86,7 @@
 		</div>
 	</div>
 	</div>	
-	<script>
-			function comprar(nombre,num1, num2){
 
-	var total = num1 * num2;
-
-	var mensaje=("Producto: " +nombre+"\n precio: "+ num1+"\n cantidad: "+num2+"\n total: "+total);
-	
-	window.alert(mensaje);
-}
-
-				</script>
 	
 	
 			
