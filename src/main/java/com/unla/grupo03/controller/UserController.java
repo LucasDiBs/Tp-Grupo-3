@@ -143,6 +143,15 @@ public class UserController {
 		return "/user/ticket";
 	}	
 	
+	//muestra las compras hechas por el usuario con el id pasado como parametro
+	@GetMapping("/misCompras/{id}")
+	public String mostrarComprasUsuario(@PathVariable int id, Model modelo) {
+		
+		modelo.addAttribute("listaArticulos", purchaseService.traerComprasUsuario(id));
+		
+		return "/user/misCompras";
+	}
+		
 	//para redireccionar
 	@GetMapping("/atras")
 	public String redireccionUserHome() {
