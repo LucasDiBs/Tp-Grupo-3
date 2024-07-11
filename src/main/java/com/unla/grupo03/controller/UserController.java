@@ -91,11 +91,8 @@ public class UserController {
 	//////////////////////////////
 	@GetMapping("/mostrarProductos")
 	public String listarProductosParaComprar(Model modelo) {
-	
-		System.out.println("Lista de productos a vender");
 		
-		modelo.addAttribute("listaDto", productService.listar());
-		
+		modelo.addAttribute("listaDto", productService.listar());		
 
 		return "user/mostrarProductos";
 	}
@@ -137,8 +134,11 @@ public class UserController {
 		producto.setCantidad(producto.getCantidad() - cantidadSolicitada);
 		productService.crearProducto(producto);
 		
-		//envia la compra a la bd
-		purchaseService.crearCompraUsuario(compraUsuario);
+		
+		//envia la compra a la bd si esta no existe
+		if(purchaseService.traerCompraUsuario(compraUsuario.getId()) == null) {
+			purchaseService.crearCompraUsuario(compraUsuario);
+		}		
 		
 		return "/user/ticket";
 	}	

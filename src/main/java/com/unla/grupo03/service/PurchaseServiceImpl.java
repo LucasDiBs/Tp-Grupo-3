@@ -18,4 +18,10 @@ public class PurchaseServiceImpl implements PurchaseService{
 		return purchaseReposit.save(compra);
 	}
 
+	@Override
+	public Purchase traerCompraUsuario(int idCompra) {
+		// TODO Auto-generated method stub
+		return purchaseReposit.findById(idCompra).get();
+	}
+
 }
