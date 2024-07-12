@@ -120,6 +120,8 @@ public class AdminController {
 	@PostMapping("/nuevoProducto")
 	public String crearProducto(@ModelAttribute("producto") Product producto, HttpSession session) {		
 		
+		producto.setActivo(true);		
+		
 		Product pAux  = service.crearProducto(producto);		
 		
 		if(pAux != null)
