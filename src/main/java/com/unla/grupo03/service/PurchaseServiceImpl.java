@@ -29,7 +29,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Override
 	public List<Purchase> traerComprasUsuario(int idUsuario) {
 		// TODO Auto-generated method stub
-		return purchaseReposit.traertraerComprasUsuario(idUsuario);
+		return purchaseReposit.traerComprasUsuario(idUsuario);
 	}
 
 }

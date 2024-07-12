@@ -28,55 +28,57 @@
 		</div>
 	</nav>
 	<br>
-<div align="center">
-	<div style="border-style:solid; width:500px">
-	<legend><h1>Ticket Final</h1></legend>
-	<fieldset>
-		<legend>Datos del Usuario</legend>
-		<table>
-			<tr>
-				<td><label>Nombre: [[${user.nombre}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Apellido: [[${user.apellido}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Email: [[${user.email}]]</label></td>
-			</tr>
-		</table>
-	</fieldset>
+	<div align="center">
+		<div style="border-style:solid; width:500px">
+			<legend>
+				<h1>Ticket Final</h1>
+			</legend>
+			<fieldset>
+				<legend>Datos del Usuario</legend>
+				<table>
+					<tr>
+						<td><label>Nombre: [[${user.nombre}]]</label></th>
+					</tr>
+					<tr>
+						<td><label>Apellido: [[${user.apellido}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Email: [[${user.email}]]</label></td>
+					</tr>
+				</table>
+			</fieldset>
 
-	<br>
+			<br>
 
-	<fieldset>
-		<legend>Datos del Articulo</legend>
-		<table>
-			<tr>
-				<td><label>Nombre: [[${producto.nombre}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Descripcion: [[${producto.descripcion}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Cantidad: [[${cantidadSolicitada}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Precio de Venta: [[${producto.precio}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Total: [[${importeTotal}]]</label></td>
-			</tr>
-			<tr>
-				<td><label>Fecha: [[${fechaActual}]]</label></td>
-			</tr>
-		</table>
-		
-	</fieldset>
+			<fieldset>
+				<legend>Datos del Articulo</legend>
+				<table>
+					<tr>
+						<td><label>Nombre: [[${producto.nombre}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Descripcion: [[${producto.descripcion}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Cantidad: [[${cantidadSolicitada}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Precio de Venta: [[${producto.precio}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Total: [[${importeTotal}]]</label></td>
+					</tr>
+					<tr>
+						<td><label>Fecha: [[${fechaActual}]]</label></td>
+					</tr>
+				</table>
+
+			</fieldset>
+		</div>
+		<br>
+		<td><a th:href="@{/user/atras}">Volver a Home</a></td>
+
 	</div>
-	<br>
-	<td><a th:href="@{/user/atras}">Volver a Home</a></td>		
-	
-</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
