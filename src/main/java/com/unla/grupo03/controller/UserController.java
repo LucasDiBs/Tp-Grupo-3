@@ -103,7 +103,7 @@ public class UserController {
 	//cargo los datos para la compra por parte del usuario
 	@GetMapping("/comprar/{id}")
 	public String comprarProducto(@PathVariable int id, Model modelo) {
-		
+
 		modelo.addAttribute("producto", productService.buscarPorId(id));	
 		modelo.addAttribute("cantidadSolicitada", 0);		
 

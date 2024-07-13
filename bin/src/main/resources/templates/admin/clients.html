@@ -22,12 +22,36 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/admin/">Home</a>
 	        </li>
-	   <li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
-	       <li class="nav-item"><a class="nav-link" th:href="@{/admin/registro}">Registrar Administrador</a></li>	
+	        <li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
+	        <li class="nav-item"><a class="nav-link" th:href="@{/admin/registro}">Registrar Administrador</a></li>	
 			<li class="nav-item"><a class="nav-link" href="clients">Clientes</a></li>
-			<li class="nav-item"><a class="nav-link" href="productos">Productos</a></li>
+		
 			<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
-	   		
+			
+			
+				
+
+			   
+			<!-- aca intentar menu desplegable para englobar pedidos: realizar, ver, modificar-->
+
+			<div class="dropdown">
+				<a class="btn btn-primary nav-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+				    Pedidos
+				  </a>				
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li ><a  class="dropdown-item "  th:href="@{/admin/nuevoPedido}">Agregar</a></li>
+					<li ><a  class="dropdown-item "  th:href="@{/admin/listarPedidos}">Ver y Modificar</a></li>
+					
+				</ul>			
+			</div>
+			<!-- fin dropdown -->
+			
+			<ul class="navbar-nav ml-auto mb-2 mb-lg-0">				
+			<li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"> Salir</a></li>
+			</ul>
+			
+			
+
 	      </ul>
 
 	    </div>

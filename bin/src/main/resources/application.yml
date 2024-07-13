@@ -1,10 +1,10 @@
 spring:
   datasource:
-    url: ${DB_URL}
-    username: ${USERNAME}
-    password: ${PASSWORD}
+    url: "${DB_URL}"
+    username: "${USERNAME}"
+    password: "${PASSWORD}"
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
     properties:
@@ -18,3 +18,10 @@ server:
   error:
     whitelabel: 
       enabled: false
+
+
+
+
+
+
+

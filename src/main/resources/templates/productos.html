@@ -39,22 +39,22 @@
 			<table class="table tabale-striped tabale-bordered ">
 			
 			<thead class="table-primary">
-	
+	<!-- id, stock, fechaRecepcion, cantidad, pedido, usuario -->
 				<tr>
 					<td>Id</td>
-					<td>Nombre</td>
-					<td>Descripcion</td>
-					<td>Precio</td>
+					<td>FechaRecepcion</td>
+					<td>Cantidad</td>
+					<td>Pedido</td>
+					<td>Usuario</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="producto : ${productos}">
-					<td th:text="${producto.id}">id</td>
-					<td th:text="${producto.nombre}">Nombre</td>
-					<td th:text="${producto.descripcion}">Descripcion</td>					
-					<td th:text="${producto.precio}">Precio</td>
-					
-
+				<tr th:each="lote : ${lotes}">
+					<td th:text="${lote.id}">Id</td>
+					<td th:text="${lote.fechaRecepcion}">FechaRecepcion</td>
+					<td th:text="${lote.cantidad}">Cantidad</td>					
+					<td th:text="${lote.pedido}">Pedido</td>
+					<td th:text="${lote.usuario}">Usuario</td>
 				</tr>
 			</tbody>
 		</table>
