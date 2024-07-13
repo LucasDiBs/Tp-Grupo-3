@@ -31,8 +31,8 @@
 					<li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"> Salir</a></li>
 
+					<<<<<<< HEAD </div>
 			</div>
-		</div>
 	</nav>
 
 	<section>
@@ -51,8 +51,11 @@
 						</th:block>
 
 						<div class="card-body text-center">
-							<form th:action="@{/user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}"
+
+							<form th:action="@{user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}"
 								method="get">
+
+
 
 								<div class="mb-3">
 									<ul class="list-group list-group-flush">

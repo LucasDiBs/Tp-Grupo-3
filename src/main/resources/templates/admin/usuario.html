@@ -25,6 +25,7 @@
 			<li class="nav-item"><a class="nav-link" href="clients">Clientes</a></li>
 		
 			<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
+				<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/productos}">ver Productos</a></li>
 			
 			
 				
@@ -74,7 +75,7 @@
 						
 						<div class="card-body text-center">	
 												
-						<form th:action="@{admin/usuario/{id}(id=${user.id})}" th:object="${user}" method="post">
+						<form th:action="@{/admin/usuario/{id}(id=${user.id})}" th:object="${user}" method="post">
 							<div class="mb-3">
 								<label>Nombre</label>
 								<input type="text" name="nombre"  th:field="${user.nombre}" class="form-control">
