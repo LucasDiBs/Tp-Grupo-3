@@ -135,7 +135,7 @@ public class UserController {
 		producto.setCantidad(producto.getCantidad() - cantidadSolicitada);
 		
 		if(producto.getCantidadCritica() > producto.getCantidad())
-			producto.setActivo(false);
+			producto.setActivo(false); 
 		
 		//actualizo los datos del producto
 		productService.crearProducto(producto);

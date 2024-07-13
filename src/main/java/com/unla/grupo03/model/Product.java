@@ -12,8 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter 
-@Setter
+
 @NoArgsConstructor
 @ToString
 @Table(name = "producto")
@@ -56,9 +55,84 @@ public class Product {
 		this.cantidadCritica = cantidadCritica;
 		this.activo = activo;
 	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+
+	public double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+
+	public double getPrecioReposicion() {
+		return precioReposicion;
+	}
+
+
+	public void setPrecioReposicion(double precioReposicion) {
+		this.precioReposicion = precioReposicion;
+	}
+
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+	public int getCantidadCritica() {
+		return cantidadCritica;
+	}
+
+
+	public void setCantidadCritica(int cantidadCritica) {
+		this.cantidadCritica = cantidadCritica;
+	}
 	
 	public boolean getActivo() {
 		
 		return activo;
+	}
+
+
+	public void setActivo(boolean b) {
+		this.activo = b;
 	}
 }

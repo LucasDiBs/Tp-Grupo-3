@@ -22,7 +22,7 @@ import lombok.ToString;
 @Getter 
 @Setter
 @ToString
-@NoArgsConstructor
+
 
 public class User {
 
@@ -97,6 +97,8 @@ public class User {
 		return roles.get(0);
 	}
 	
-
+	public User() {
+		
+	}
 	
 }

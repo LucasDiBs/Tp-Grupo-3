@@ -1,8 +1,11 @@
 package com.unla.grupo03.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.unla.grupo03.model.Lot;
+
 @Repository
-public interface LotRepository {
+public interface LotRepository extends JpaRepository<Lot, Integer> {
 
 }
