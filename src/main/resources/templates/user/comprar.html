@@ -31,56 +31,6 @@
 					<li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"> Salir</a></li>
 
-<<<<<<< HEAD
-					<th:block th:if="${session.msg}">
-						<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
-						<th:block
-							th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
-					</th:block>
-
-					<div class="card-body text-center">
-
-			<form th:action="@{user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}" method="get">
-			
-							<div class="mb-3">
-							
-								<ul class="list-group list-group-flush">
-								
-												
-									<li class="list-group-item"><h5><label>Nombre: [[${producto.nombre}]]</label></h5></li>
-										
-											
-									<li class="list-group-item" ><h5><label>Descripcion: [[${producto.descripcion}]]</label></h5></li>
-									
-									<li class="list-group-item"> <h5><label>Precio de venta: [[${producto.precio}]]</label></h5></li>	
-										
-									<li class="list-group-item"> <h5><label>Cantidad: (maximo a comprar: [[${producto.cantidad}]])</h5></li>
-									
-										<input type="number" name="cantidadSolicitada" class="form-control "  style="text-align: center;"/>
-									
-										
-
-									<li class="list-group-item"><button class="btn btn-success col-md-6" >Comprar</button></li>										 								
-										
-													
-								</ul>
-								
-								
-
-							</div>	
-					    </form>
-
-
-					
-					</div>
-			</div>
-		</div>
-	</div>
-	</div>	
-	
-			
-</section>
-=======
 			</div>
 		</div>
 	</nav>
@@ -93,7 +43,7 @@
 						<div class="card-header text-center fs-4">
 							<legend>Datos del Producto</legend>
 						</div>
->>>>>>> origin/rama_alberto
+
 
 						<th:block th:if="${session.msg}">
 							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
@@ -101,7 +51,8 @@
 						</th:block>
 
 						<div class="card-body text-center">
-							<form th:action="@{/user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}"	method="get">
+							<form th:action="@{/user/ticket/}+${producto.id}" name="formCompra" th:object="${producto}"
+								method="get">
 
 								<div class="mb-3">
 									<ul class="list-group list-group-flush">
@@ -123,10 +74,12 @@
 											<h5><label>Cantidad: (maximo a comprar: [[${producto.cantidad}]])</h5>
 										</li>
 
-										<input type="number" name="cantidadSolicitada" class="form-control"	style="text-align: center" />
+										<input type="number" name="cantidadSolicitada" class="form-control"
+											style="text-align: center" />
 
 
-										<li class="list-group-item"><button	class="btn btn-success col-md-6">Comprar</button></li>
+										<li class="list-group-item"><button
+												class="btn btn-success col-md-6">Comprar</button></li>
 
 									</ul>
 
