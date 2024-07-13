@@ -39,6 +39,9 @@ public class Purchase {
 	@Column(name = "importe")
 	private double importe;
 	
+	@Column(name = "importeUnidad")
+	private double importeUnidad;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idProducto",nullable=false)
 	private Product producto;

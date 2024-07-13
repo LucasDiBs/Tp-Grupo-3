@@ -40,17 +40,23 @@ public class Product {
 	@Column(name = "cantidadcritica")
 	private int cantidadCritica;
 	
+	@Column(name = "activo")
+	private boolean activo;
 
-	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad, int cantidadCritica) {
-		super();
+	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad,
+			int cantidadCritica, boolean activo) {
+
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.precioReposicion = precioReposicion;
 		this.cantidad = cantidad;
 		this.cantidadCritica = cantidadCritica;
+		this.activo = activo;
 	}
 	
-
-
+	public boolean getActivo() {
+		
+		return activo;
+	}
 }
