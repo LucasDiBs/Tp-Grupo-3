@@ -92,7 +92,7 @@ public class UserController {
 	@GetMapping("/mostrarProductos")
 	public String listarProductosParaComprar(Model modelo) {
 		
-		modelo.addAttribute("listaDto", productService.listar());		
+		modelo.addAttribute("listaDto", productService.listarDto());		
 
 		return "user/mostrarProductos";
 	}
@@ -124,21 +124,26 @@ public class UserController {
 		compraUsuario.setCantidadCompra(cantidadSolicitada);
 		compraUsuario.setFechaCompra(LocalDate.now());
 		compraUsuario.setImporte(cantidadSolicitada * producto.getPrecio());
+		compraUsuario.setImporteUnidad(producto.getPrecio());
 		
 		//estos datos los muestra en la vista
 		modelo.addAttribute("producto", producto);
 		modelo.addAttribute("importeTotal",compraUsuario.getImporte());
 		modelo.addAttribute("fechaActual", LocalDate.now());
-		
-		//actualizo la catidad del producto en la bd
+				
+		//actualizo los cambios producidos en el producto y salvo en la bd
 		producto.setCantidad(producto.getCantidad() - cantidadSolicitada);
+		
+		if(producto.getCantidadCritica() > producto.getCantidad())
+			producto.setActivo(false);
+		
+		//actualizo los datos del producto
 		productService.crearProducto(producto);
 		
+		//guardo la compra en la bd
+		purchaseService.crearCompraUsuario(compraUsuario);
 		
-		//envia la compra a la bd si esta no existe
-		if(purchaseService.traerCompraUsuario(compraUsuario.getId()) == null) {
-			purchaseService.crearCompraUsuario(compraUsuario);
-		}		
+		System.out.println(compraUsuario);
 		
 		return "/user/ticket";
 	}	

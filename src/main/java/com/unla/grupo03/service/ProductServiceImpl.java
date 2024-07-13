@@ -26,10 +26,8 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		productRepo.deleteById(id);
-		
+		productRepo.deleteById(id);		
 	}
-
 
 	@Override
 	public Product crearProducto(Product producto) {
@@ -50,15 +48,18 @@ public class ProductServiceImpl implements ProductService{
 		List<ProductDTO> listaDto = new ArrayList<ProductDTO>();
 		
 		for(Product producto: productRepo.findAll()) {
-			
-			ProductDTO prodDto = new ProductDTO();
-			
-			prodDto.setId(producto.getId());
-			prodDto.setNombre(producto.getNombre());
-			prodDto.setDescripcion(producto.getDescripcion());
-			prodDto.setPrecio(producto.getPrecio());
-			
-			listaDto.add(prodDto);	
+
+			if(producto.getActivo()) {
+
+				ProductDTO prodDto = new ProductDTO();
+
+				prodDto.setId(producto.getId());
+				prodDto.setNombre(producto.getNombre());
+				prodDto.setDescripcion(producto.getDescripcion());
+				prodDto.setPrecio(producto.getPrecio());
+
+				listaDto.add(prodDto);	
+			}
 		}			
 			
 		return listaDto;

@@ -13,5 +13,5 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Integer>{
 	
 	//trae las compras del usuario con el id pasado como parametro
 	@Query("SELECT p FROM Purchase p JOIN FETCH p.usuario u WHERE u.id = (:id)")
-	public List<Purchase> traertraerComprasUsuario(int id);
+	public List<Purchase> traerComprasUsuario(int id);
 }
