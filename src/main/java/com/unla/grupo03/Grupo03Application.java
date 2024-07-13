@@ -34,21 +34,21 @@ public class Grupo03Application implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-			
 			/*
-			Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3);
+			
+			Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3,true);
 			repositorio.save(producto1);
 			
-			Product producto2 = new Product("Sacapuntas", "Sacapuntas Verde", (double)35,(double)20,22,3);
+			Product producto2 = new Product("Sacapuntas", "Sacapuntas Verde", (double)35,(double)20,22,3, false);
 			repositorio.save(producto2);
 			
-			Product producto3 = new Product("Cartuchera", "Caruchera Verde",  (double)200,(double)100,5,6);
+			Product producto3 = new Product("Cartuchera", "Caruchera Verde",  (double)200,(double)100,5,6,true);
 			repositorio.save(producto3);
 			
-			Product producto4 = new Product("Cartuchera", "Caruchera Roja",  (double)200,(double)100,5,6);
+			Product producto4 = new Product("Cartuchera", "Caruchera Roja",  (double)200,(double)100,5,6,true);
 			repositorio.save(producto4);
 			
-			Product producto5 = new Product("Mochila", "Mochila Grande",  (double)500,(double)250,10,3);
+			Product producto5 = new Product("Mochila", "Mochila Grande",  (double)500,(double)250,10,3,true);
 			repositorio.save(producto4);
 			
 			
@@ -60,7 +60,7 @@ public class Grupo03Application implements CommandLineRunner  {
 			
 		
 	
-			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user1@user1","1234");
+			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234");
 			
 			uService.createUser(user);
 	*/
