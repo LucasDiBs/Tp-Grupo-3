@@ -23,14 +23,15 @@
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
 	          <a class="nav-link" aria-current="page" href="/user/">Home</a>
-	        </li>
-	        	
+	        </li>     	
 
 	        <li class="nav-item"><a class="nav-link " th:href="@{/user/usuario/{id}(id=${user.id})}"  th:text="${user.nombre}"></a></li>	
 
-		<li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>
+	        <li class="nav-item"><a class="nav-link" th:href="mostrarProductos">Comprar</a></li>		
 		
-		<li class="nav-item"><a class="nav-link"  href="/logout">Salir</a></li>						
+		<li class="nav-item"><a class="nav-link" th:href="@{/user/misCompras/}+${user.id}">Mis Compras</a></li>
+		
+		<li class="nav-item"><a class="nav-link" href="/logout">Salir</a></li>						
 			
 
 	      </ul>

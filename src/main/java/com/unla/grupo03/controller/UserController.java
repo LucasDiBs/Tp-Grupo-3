@@ -91,11 +91,8 @@ public class UserController {
 	//////////////////////////////
 	@GetMapping("/mostrarProductos")
 	public String listarProductosParaComprar(Model modelo) {
-	
-		System.out.println("Lista de productos a vender");
 		
-		modelo.addAttribute("listaDto", productService.listar());
-		
+		modelo.addAttribute("listaDto", productService.listarDto());		
 
 		return "user/mostrarProductos";
 	}
@@ -127,22 +124,39 @@ public class UserController {
 		compraUsuario.setCantidadCompra(cantidadSolicitada);
 		compraUsuario.setFechaCompra(LocalDate.now());
 		compraUsuario.setImporte(cantidadSolicitada * producto.getPrecio());
+		compraUsuario.setImporteUnidad(producto.getPrecio());
 		
 		//estos datos los muestra en la vista
 		modelo.addAttribute("producto", producto);
 		modelo.addAttribute("importeTotal",compraUsuario.getImporte());
 		modelo.addAttribute("fechaActual", LocalDate.now());
-		
-		//actualizo la catidad del producto en la bd
+				
+		//actualizo los cambios producidos en el producto y salvo en la bd
 		producto.setCantidad(producto.getCantidad() - cantidadSolicitada);
+		
+		if(producto.getCantidadCritica() > producto.getCantidad())
+			producto.setActivo(false); 
+		
+		//actualizo los datos del producto
 		productService.crearProducto(producto);
 		
-		//envia la compra a la bd
+		//guardo la compra en la bd
 		purchaseService.crearCompraUsuario(compraUsuario);
+		
+		System.out.println(compraUsuario);
 		
 		return "/user/ticket";
 	}	
 	
+	//muestra las compras hechas por el usuario con el id pasado como parametro
+	@GetMapping("/misCompras/{id}")
+	public String mostrarComprasUsuario(@PathVariable int id, Model modelo) {
+		
+		modelo.addAttribute("listaArticulos", purchaseService.traerComprasUsuario(id));
+		
+		return "/user/misCompras";
+	}
+		
 	//para redireccionar
 	@GetMapping("/atras")
 	public String redireccionUserHome() {
