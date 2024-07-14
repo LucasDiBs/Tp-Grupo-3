@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 import com.unla.grupo03.model.Order;
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.User;
@@ -32,7 +30,6 @@ import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-
 
 import jakarta.validation.Valid;
 
@@ -173,7 +170,7 @@ public class AdminController {
 		
 		return "/admin/nuevoProducto"; 
 	}
-	
+
 	@GetMapping("/editarProducto")
 	public String editarProductoForm(Model modelo, @RequestParam int id) {	
 		try {

@@ -18,8 +18,6 @@ import com.unla.grupo03.model.Order;
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.Purchase;
 import com.unla.grupo03.model.User;
-
-
 import com.unla.grupo03.modelDTO.ProductDTO;
 
 import com.unla.grupo03.repository.UserRepository;

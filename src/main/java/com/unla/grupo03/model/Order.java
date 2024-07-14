@@ -102,6 +102,6 @@ public class Order {
 	public void setCostoPedido(double costoPedido) {
 		this.costoPedido = costoPedido;
 	}
-	
+
 		
 }

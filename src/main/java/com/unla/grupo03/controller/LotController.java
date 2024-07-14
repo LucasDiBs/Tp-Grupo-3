@@ -33,14 +33,15 @@ public class LotController {
 	}
 	
 	@PostMapping("/crear_lote")
-	public String guardarLote(Model model, Lot lote) {
+
+	public String guardarLote(@ModelAttribute("lote") Lot lote) {
 		service.crearLote(lote);
-		return "/lotes";
+		return "redirect:admin/lotes";
 	}
 	
 //	@GetMapping("/lotes/editar/{id}")
 //	public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
-//		model.addAttribute("lotes", service.buscarPorId(id));
+//		model.addAttribute("lote", service.buscarPorId(id));
 //		return "editar_lote";
 //	}
 //	

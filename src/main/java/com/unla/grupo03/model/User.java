@@ -131,6 +131,5 @@ public class User {
 	public void setUserRoles(Set<UserRol> userRoles) {
 		this.userRoles = userRoles;
 	}
-
 	
 }

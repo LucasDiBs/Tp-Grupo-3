@@ -88,18 +88,42 @@
 						
 						
 
-						<form th:action="@{/admin/crear_lote}" th:object="${lote}" method="post">
-
+						<form th:action="@{/admin/lotes}" th:object="${lote}" method="post">
+						
 							<div class="form-group">
+<<<<<<< HEAD
 
 						
+=======
+								
+								<label>Id Stock </label>
+								<input type="number" name="idStock" th:field="*{fechaRecepcion}"
+									class="form-control" placeholder="Id del stock" required>
+								<br>
+
+								<label>Fecha Recepcion</label>
+								<input type="date" name="fechaRecepcion" th:field="*{fechaRecepcion}"
+									class="form-control" placeholder="fehca recepcion" required>
+								<br>
+
+>>>>>>> 4a629e125e45e10192e2a0c45d7217b048e5e169
 								<label>Cantidad</label>
 								<input type="text" name="cantidad" th:field="*{cantidad}" class="form-control"
-									placeholder="cantidad">
+									placeholder="cantidad" required>
 								
 								<label>Pedido</label>
+<<<<<<< HEAD
 								<input type="text" name="pedido" th:field="*{pedido}" class="form-control" placeholder="pedido">
 								
+=======
+								<input type="text" name="pedido" th:field="*{pedido}" class="form-control"
+									placeholder="pedido" required>
+								
+								<label>usuario</label>
+								<input type="text" name="usuario" th:field="*{usuario}" class="form-control"
+									placeholder="usuario" required>
+
+>>>>>>> 4a629e125e45e10192e2a0c45d7217b048e5e169
 							</div>
 							<br>
 

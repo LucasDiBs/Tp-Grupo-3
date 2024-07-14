@@ -34,6 +34,7 @@ public class UserRol {
 	private String rol;
 	
 
+
 	public UserRol() {
 		
 	}
