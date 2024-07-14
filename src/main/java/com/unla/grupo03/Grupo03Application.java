@@ -34,8 +34,13 @@ public class Grupo03Application implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
+<<<<<<< HEAD
 			/*
 			
+=======
+			
+			/*
+>>>>>>> origin/master
 			Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3,true);
 			repositorio.save(producto1);
 			
@@ -57,7 +62,15 @@ public class Grupo03Application implements CommandLineRunner  {
 			
 			com.unla.grupo03.model.User admin = new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234");
 			
+<<<<<<< HEAD
 			uService.createAdmin(admin);		
+=======
+			
+			
+			uService.createAdmin(admin);		
+			
+		
+>>>>>>> origin/master
 	
 			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234");
 			

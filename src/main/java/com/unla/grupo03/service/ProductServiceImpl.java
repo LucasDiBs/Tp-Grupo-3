@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo03.model.Product;
+<<<<<<< HEAD
 
+=======
+import com.unla.grupo03.modelDTO.ProductDTO;
+>>>>>>> origin/master
 import com.unla.grupo03.repository.ProductRepository;
 
 @Service
@@ -42,5 +46,30 @@ public class ProductServiceImpl implements ProductService{
 		return productRepo.findById(id_producto).get();
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public List<ProductDTO> listarDto() {
+		// TODO Auto-generated method stub
+		List<ProductDTO> listaDto = new ArrayList<ProductDTO>();
+		
+		for(Product producto: productRepo.findAll()) {
+
+			if(producto.getActivo()) {
+
+				ProductDTO prodDto = new ProductDTO();
+
+				prodDto.setId(producto.getId());
+				prodDto.setNombre(producto.getNombre());
+				prodDto.setDescripcion(producto.getDescripcion());
+				prodDto.setPrecio(producto.getPrecio());
+
+				listaDto.add(prodDto);	
+			}
+		}			
+			
+		return listaDto;
+	}
+>>>>>>> origin/master
 	
 }

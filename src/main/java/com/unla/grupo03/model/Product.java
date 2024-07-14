@@ -44,6 +44,14 @@ public class Product {
 
 	
 
+<<<<<<< HEAD
+=======
+	public Product() {
+		
+	}
+
+
+>>>>>>> origin/master
 	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad, int cantidadCritica, boolean activo) {
 		super();
 

@@ -49,6 +49,65 @@ public class Purchase {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idUsuario",nullable=false)
 	private User usuario;
+<<<<<<< HEAD
+=======
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public LocalDate getFechaCompra() {
+		return fechaCompra;
+	}
+
+	public void setFechaCompra(LocalDate fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+
+	public int getCantidadCompra() {
+		return cantidadCompra;
+	}
+
+	public void setCantidadCompra(int cantidadCompra) {
+		this.cantidadCompra = cantidadCompra;
+	}
+
+	public double getImporte() {
+		return importe;
+	}
+
+	public void setImporte(double importe) {
+		this.importe = importe;
+	}
+
+	public double getImporteUnidad() {
+		return importeUnidad;
+	}
+
+	public void setImporteUnidad(double importeUnidad) {
+		this.importeUnidad = importeUnidad;
+	}
+
+	public Product getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Product producto) {
+		this.producto = producto;
+	}
+
+	public User getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}
+>>>>>>> origin/master
 	
 	
 }
