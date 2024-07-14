@@ -28,8 +28,8 @@ public class LotController {
 	@GetMapping("/crear_lote")
 	public String mostrarFormularioDeRegistrarLote(Model model) {
 		Lot lote = new Lot();
-		model.addAttribute("lotes", lote);
-		return "crear_lote";
+		model.addAttribute("lote", lote);
+		return "admin/crear_lote";
 	}
 	
 	@PostMapping("/lotes")

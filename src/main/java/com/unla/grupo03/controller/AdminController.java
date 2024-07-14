@@ -64,6 +64,28 @@ public class AdminController {
 		m.addAttribute("user", uService.traerUserPorId(id));
 		return "admin/usuario";
 	}
+
+	
+	
+	@PostMapping("/usuario/{id}")
+	public String actualizarUser(@PathVariable int id, @ModelAttribute("user") User user, Model modelo) {
+		User auxUser = uService.traerUserPorId(id);
+		
+		auxUser.setId(id);
+		auxUser.setNombre(user.getNombre());
+		auxUser.setApellido(user.getApellido());
+		auxUser.setEmail(user.getEmail());		
+		uService.editarUser(auxUser);
+		return "admin/clients";
+	}
+	
+	
+	@GetMapping("/eliminarUsuario/{id}")
+	public String eliminarUsuario(@PathVariable int id, Model modelo) {		
+	
+		uService.eliminarUser(id);
+		return "admin/clients";
+	}
 	
 	
 	
@@ -192,6 +214,9 @@ public class AdminController {
 		return "admin/formEditarPedido";
 	}
 	
+	
+	
+	
 	@PostMapping("/editar")
 	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("idProducto") Integer idProducto, HttpSession session) {
 		
@@ -208,7 +233,9 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}
-
+	
+	
+	
 	
 	//metoods para borrar un pedido de la bd
 	@GetMapping("/eliminar/{id}")

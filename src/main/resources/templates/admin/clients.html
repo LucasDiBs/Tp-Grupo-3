@@ -72,6 +72,7 @@
 					<td>Email</td>
 					<td>Rol</td>
 					<td>Editar</td>
+					<td>ELIMINAR</td>
 					
 				</tr>
 			</thead>
@@ -85,7 +86,7 @@
 					<td th:text="${cliente.userRoles[0].rol}">Rol</td>
 					
 					<td> <a class="btn btn-success" th:href="@{/admin/usuario/{id}(id=${cliente.id})}"> Editar </a></td>	
-										
+					<td><a th:href="@{/admin/eliminarUsuario/{id}(id=${cliente.id})}" class="btn btn-danger">Darse de baja</a></td>		
 					
 				
 			</tbody>
