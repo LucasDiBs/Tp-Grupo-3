@@ -92,7 +92,7 @@ public class UserController {
 	@GetMapping("/mostrarProductos")
 	public String listarProductosParaComprar(Model modelo) {
 		
-		modelo.addAttribute("listaDto", productService.listarDto());		
+		modelo.addAttribute("listaDto", productService.listar());		
 
 		return "user/mostrarProductos";
 	}

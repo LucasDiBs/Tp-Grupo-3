@@ -36,13 +36,12 @@
 	</nav>
 	<br>
 
-	<h1>Lista de productos disponibles</h1>
-	
-
 	<div class="container mt-4">
-		<h1 style="color:green;" align="center">CLIENTES</h1>
-		<table class="table ">
-			<thead>
+		<table class="table tabale-striped tabale-bordered ">
+
+			<thead class="table-primary">
+
+		
 				<tr>
 					<!--<td>Id</td>-->
 					<td>Nombre</td>
@@ -52,16 +51,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="productoDto:${listaDto}">
-					<!--<td th:text="${productoDto.id}">id</td>-->
+				<tr th:each="productoDto:${listaDto}" th:if="${productoDto.activo}" >
+				
 					<td th:text="${productoDto.nombre}">Nombre</td>
 					<td th:text="${productoDto.descripcion}">Descripcion</td>
-					<td th:text="${productoDto.precio}">Precio</td>
+					<td th:text="${productoDto.precio}">Precio</td>					
 					<td>
 
 						<a th:href="@{/user/comprar/}+${productoDto.id}"  class="btn btn-success">Comprar</a>
 
 					</td>
+					
 				</tr>
 			</tbody>
 		</table>

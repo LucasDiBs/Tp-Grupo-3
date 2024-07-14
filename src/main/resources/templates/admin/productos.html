@@ -93,20 +93,22 @@
 					<td>Precio</td>
 					<td>Cantidad</td>
 					<td>Cantidad Critica</td>
+					<td>Estado</td>
 					<td>Avisos</td>
 				</tr>
 			</thead>
 			<tbody>
 			
-				<tr  th:each="producto : ${productos}" th:if="${producto.activo == true}">								
+				<tr  th:each="producto : ${productos}" th:if="${producto.activo}">								
 							
 					<th scope="row"></th>
 					<td th:text="${producto.id}"> id</td>
 					<td th:text="${producto.nombre}">Nombre</td>
 					<td th:text="${producto.descripcion}">Descripcion</td>
-					<td   th:text="${producto.precio}">Precio</td>
+					<td th:text="${producto.precio}">Precio</td>
 					<td th:text="${producto.cantidad}">Cantidad</td>
-					<td  th:text="${producto.cantidadCritica}">Cantidad Critica</td>
+					<td th:text="${producto.cantidadCritica}">Cantidad Critica</td>
+					<td th:text="${producto.activo}">Estado</td>
 					
 						 
 					<td th:if="${producto.cantidad > producto.cantidadCritica + 15}"
@@ -159,7 +161,8 @@
 					<td class="text-muted"  th:text="${producto.descripcion}">Descripcion</a></td>
 					<td class="text-muted"  th:text="${producto.precio}">Precio</a></td>
 					<td class="text-muted"  th:text="${producto.cantidad}">Cantidad</a></td>
-					<td class="text-muted" th:text="${producto.cantidadCritica}">Cantidad Critica</a></td>				
+					<td class="text-muted" th:text="${producto.cantidadCritica}">Cantidad Critica</a></td>		
+					<td th:text="${producto.activo}">Estado</td>		
 				
 				 
 					<td th:if="${producto.cantidad > producto.cantidadCritica + 15}"
