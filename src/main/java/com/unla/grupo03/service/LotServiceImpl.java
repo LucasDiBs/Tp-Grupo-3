@@ -19,7 +19,7 @@ public class LotServiceImpl implements LotService{
 	}
 
 	@Override
-	public Lot crearLote(Lot lote) {
+	public Lot crearLote(Lot lote) {		
 		return loteRepositorio.save(lote);
 	}
 

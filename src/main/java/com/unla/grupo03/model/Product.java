@@ -13,7 +13,6 @@ import lombok.ToString;
 
 @Entity
 
-@NoArgsConstructor
 @ToString
 @Table(name = "producto")
 public class Product {
@@ -44,14 +43,10 @@ public class Product {
 
 	
 
-<<<<<<< HEAD
-=======
-	public Product() {
-		
-	}
+	public Product() {}
 
 
->>>>>>> origin/master
+
 	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad, int cantidadCritica, boolean activo) {
 		super();
 

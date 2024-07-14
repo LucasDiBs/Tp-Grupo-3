@@ -45,8 +45,7 @@ public class Order {
 
 	@Column(name = "costoPedido")
 	private double costoPedido;
-<<<<<<< HEAD
-=======
+
 
 	public int getId() {
 		return id;
@@ -104,8 +103,5 @@ public class Order {
 		this.costoPedido = costoPedido;
 	}
 	
-	
-	
->>>>>>> origin/master
 		
 }

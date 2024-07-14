@@ -19,8 +19,6 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-
 @Table(name="user_rol", uniqueConstraints=@UniqueConstraint(columnNames= {"rol", "user_id"}))
 public class UserRol {
 	
@@ -35,13 +33,11 @@ public class UserRol {
 	@Column(name="rol", nullable=false, length=20)
 	private String rol;
 	
-<<<<<<< HEAD
-=======
+
 	public UserRol() {
 		
 	}
 
->>>>>>> origin/master
 	public UserRol(User user, String rol) {
 		this.user = user;
 		this.rol = rol;

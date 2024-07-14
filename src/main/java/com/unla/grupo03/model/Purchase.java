@@ -20,7 +20,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter 
+@NoArgsConstructor
 @ToString
 @Table(name = "compra")
 public class Purchase {
@@ -49,8 +50,7 @@ public class Purchase {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idUsuario",nullable=false)
 	private User usuario;
-<<<<<<< HEAD
-=======
+
 
 	public int getId() {
 		return id;
@@ -107,7 +107,7 @@ public class Purchase {
 	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
->>>>>>> origin/master
+
 	
 	
 }

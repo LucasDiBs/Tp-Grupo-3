@@ -18,10 +18,10 @@ import com.unla.grupo03.model.Order;
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.Purchase;
 import com.unla.grupo03.model.User;
-<<<<<<< HEAD
-=======
+
+
 import com.unla.grupo03.modelDTO.ProductDTO;
->>>>>>> origin/master
+
 import com.unla.grupo03.repository.UserRepository;
 import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.PurchaseService;

@@ -23,7 +23,6 @@ import lombok.ToString;
 @Setter
 @ToString
 
-
 public class User {
 
 	@Id
@@ -100,8 +99,6 @@ public class User {
 	public User() {
 		
 	}
-<<<<<<< HEAD
-=======
 
 	public int getId() {
 		return id;
@@ -134,6 +131,6 @@ public class User {
 	public void setUserRoles(Set<UserRol> userRoles) {
 		this.userRoles = userRoles;
 	}
->>>>>>> origin/master
+
 	
 }

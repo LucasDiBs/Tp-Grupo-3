@@ -20,7 +20,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter 
+@Setter
+@NoArgsConstructor
 @Table(name="lote", uniqueConstraints=@UniqueConstraint(columnNames= {"id", "user_id"}))
 public class Lot {
 	@Id
@@ -45,4 +47,16 @@ public class Lot {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUser",nullable=false)
 	private User usuario;
+
+	public Lot(Stock stock, LocalDate fechaRecepcion, int cantidad, Order pedido, User usuario) {
+		super();
+		this.stock = stock;
+		this.fechaRecepcion = LocalDate.now();
+		this.cantidad = cantidad;
+		this.pedido = pedido;
+		this.usuario = usuario;
+	}
+	
+	
+	
 }

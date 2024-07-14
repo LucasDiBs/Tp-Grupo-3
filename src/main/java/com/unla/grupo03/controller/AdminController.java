@@ -7,38 +7,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
+
 import org.springframework.validation.BindingResult;
->>>>>>> origin/master
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
-=======
+
 import org.springframework.web.bind.annotation.RequestParam;
 
->>>>>>> origin/master
+
 
 import com.unla.grupo03.model.Order;
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.User;
-<<<<<<< HEAD
-=======
+
 import com.unla.grupo03.repository.ProductRepository;
->>>>>>> origin/master
+
 import com.unla.grupo03.repository.UserRepository;
 import com.unla.grupo03.service.OrderService;
 import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-<<<<<<< HEAD
-=======
+
+
 import jakarta.validation.Valid;
->>>>>>> origin/master
+
 
 @Controller
 @RequestMapping("/admin/")
@@ -55,11 +52,10 @@ public class AdminController {
 	
 	@Autowired
 	private OrderService orderService;
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	 private ProductRepository productRepo;
->>>>>>> origin/master
+
 	
 	@ModelAttribute
 	private void userDetalles(Model m, Principal p) {
@@ -151,11 +147,9 @@ public class AdminController {
 		
 			return "/admin/registro";
 	}	
-<<<<<<< HEAD
-	
-=======
+
 	///////////////////////////Producto//////////////////////////////
->>>>>>> origin/master
+
 	@GetMapping("/nuevoProducto")
 	public String mostarProductoForm(Model modelo) {		
 		Product producto = new Product();
@@ -180,8 +174,6 @@ public class AdminController {
 		return "/admin/nuevoProducto"; 
 	}
 	
-<<<<<<< HEAD
-=======
 	@GetMapping("/editarProducto")
 	public String editarProductoForm(Model modelo, @RequestParam int id) {	
 		try {
@@ -241,7 +233,7 @@ public class AdminController {
 		 return"redirect:/admin/productos";
 	 }
 	
->>>>>>> origin/master
+
 	//para registrar un pedido de productos
 	@GetMapping("/nuevoPedido")
 	public String mostrarPedidoForm(Model modelo) {
