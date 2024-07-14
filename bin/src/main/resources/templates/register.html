@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+
+<head>
+<meta charset="utf-8" />
+<title>Registro</title>
+
+
+<script src="avisos.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+	<section>
+		<div class="container p-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center fs-4">Pagina de Registro</div>
+
+						<th:block th:if="${session.msg}">
+							<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+
+							<th:block
+								th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+
+						</th:block>
+
+						<div class="card-body">
+
+							<form action="createUser" method="post">
+								<div class="mb-3">
+									<label>Ingrese Nombre</label> <input type="text" name="nombre"
+										class="form-control">
+								</div>
+								<div class="mb-3">
+									<label>Ingrese Apellido</label> <input type="text"
+										name="apellido" class="form-control">
+								</div>
+								<div class="mb-3">
+									<label>Ingrese Email</label> <input type="text" name="email"
+										class="form-control">
+								</div>
+								<div class="mb-3">
+									<label>Ingrese Password</label> <input type="password"
+										name="password" class="form-control">
+								</div>
+
+								<button id="btn-registro" class="btn btn-primary col-md-12">Registrarse</button>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+
+</html>
