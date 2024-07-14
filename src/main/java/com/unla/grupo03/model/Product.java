@@ -42,8 +42,9 @@ public class Product {
 	@Column(name = "activo")
 	private boolean activo;
 
-	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad,
-			int cantidadCritica, boolean activo) {
+
+	public Product(String nombre, String descripcion, double precio, double precioReposicion, int cantidad, int cantidadCritica, boolean activo) {
+		super();
 
 		this.nombre = nombre;
 		this.descripcion = descripcion;

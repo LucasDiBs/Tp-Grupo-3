@@ -6,7 +6,8 @@ public interface StockService {
 
 	public Stock crearStock(Stock stock);
 	
-	public Stock traer(int id);
-	
-	public Stock editar(Stock s);
+	Stock traer(int id);
+
+	Stock editar(Stock s);
+
 }

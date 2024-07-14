@@ -7,21 +7,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.unla.grupo03.model.Order;
 import com.unla.grupo03.model.Product;
 import com.unla.grupo03.model.User;
+
+import com.unla.grupo03.repository.ProductRepository;
 import com.unla.grupo03.repository.UserRepository;
 import com.unla.grupo03.service.OrderService;
 import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+
 
 @Controller
 @RequestMapping("/admin/")
@@ -38,6 +47,10 @@ public class AdminController {
 	
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	 private ProductRepository productRepo;
+
 	
 	@ModelAttribute
 	private void userDetalles(Model m, Principal p) {
@@ -63,6 +76,28 @@ public class AdminController {
 	private String traerUsuarioPorId(@PathVariable int id, Model m) {				
 		m.addAttribute("user", uService.traerUserPorId(id));
 		return "admin/usuario";
+	}
+
+	
+	
+	@PostMapping("/usuario/{id}")
+	public String actualizarUser(@PathVariable int id, @ModelAttribute("user") User user, Model modelo) {
+		User auxUser = uService.traerUserPorId(id);
+		
+		auxUser.setId(id);
+		auxUser.setNombre(user.getNombre());
+		auxUser.setApellido(user.getApellido());
+		auxUser.setEmail(user.getEmail());		
+		uService.editarUser(auxUser);
+		return "admin/clients";
+	}
+	
+	
+	@GetMapping("/eliminarUsuario/{id}")
+	public String eliminarUsuario(@PathVariable int id, Model modelo) {		
+	
+		uService.eliminarUser(id);
+		return "admin/clients";
 	}
 	
 	
@@ -107,7 +142,9 @@ public class AdminController {
 		
 			return "/admin/registro";
 	}	
-	
+
+	///////////////////////////Producto//////////////////////////////
+
 	@GetMapping("/nuevoProducto")
 	public String mostarProductoForm(Model modelo) {		
 		Product producto = new Product();
@@ -132,6 +169,67 @@ public class AdminController {
 		return "/admin/nuevoProducto"; 
 	}
 	
+
+	@GetMapping("/editarProducto")
+	public String editarProductoForm(Model modelo, @RequestParam int id) {	
+		try {
+			Product aux = productRepo.findById(id).get();
+			modelo.addAttribute("aux", aux);
+			Product producto = new Product();
+			
+			producto.setNombre(aux.getNombre());
+			producto.setDescripcion(aux.getDescripcion());
+			producto.setPrecio(aux.getPrecio());
+			producto.setPrecioReposicion(aux.getPrecioReposicion());
+			producto.setCantidad(aux.getCantidad());
+			producto.setCantidadCritica(aux.getCantidadCritica());
+			producto.setActivo(aux.getActivo());
+			modelo.addAttribute("producto", producto);
+		}catch(Exception ex) {
+			 System.out.println("Exception: "+ ex.getMessage());
+			 return"/admin/";
+		 }
+		
+		return "admin/editarProducto"; 
+	}
+	@PostMapping("/editarProducto")
+	 public String ActualizarProducto(Model model,@RequestParam int id,@Valid @ModelAttribute Product producto, BindingResult result){
+		 try {
+			 Product aux = productRepo.findById(id).get();
+			 model.addAttribute("producto", producto);
+			 if(result.hasErrors()) {
+				 return"producto/editar";
+			 }
+			 aux.setNombre(producto.getNombre());
+			 aux.setDescripcion(producto.getDescripcion());
+			 aux.setPrecio(producto.getPrecio());
+			 aux.setPrecioReposicion(producto.getPrecioReposicion());
+			 aux.setCantidad(producto.getCantidad());
+			 aux.setCantidadCritica(producto.getCantidadCritica());
+			 aux.setActivo(producto.getActivo());
+			 productRepo.save(aux);
+		 }catch(Exception ex) {
+			 System.out.println("Exception: "+ ex.getMessage());
+			 return"redirect:/admin/";
+		 }
+		 return"redirect:/admin/productos";
+		 
+	 }
+	@GetMapping("/eliminar")
+	 public String eliminarProducto(@RequestParam int id){
+		 try {
+			 Product producto =  productRepo.findById(id).get();
+			 productRepo.delete(producto);
+		 }catch(Exception ex) {
+			 System.out.println("Exception: "+ ex.getMessage());
+			 return"redirect:/admin";
+			 
+		 }
+		 
+		 return"redirect:/admin/productos";
+	 }
+	
+
 	//para registrar un pedido de productos
 	@GetMapping("/nuevoPedido")
 	public String mostrarPedidoForm(Model modelo) {
@@ -192,6 +290,9 @@ public class AdminController {
 		return "admin/formEditarPedido";
 	}
 	
+	
+	
+	
 	@PostMapping("/editar")
 	public String actualizarPedido(@ModelAttribute("pedido") Order pedido, @ModelAttribute("idProducto") Integer idProducto, HttpSession session) {
 		
@@ -208,7 +309,9 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}
-
+	
+	
+	
 	
 	//metoods para borrar un pedido de la bd
 	@GetMapping("/eliminar/{id}")

@@ -22,11 +22,10 @@ public class StockServiceImpl implements StockService{
 	public Stock traer(int id) {
 		return stockRepo.findById(id).get();
 	}
-
-	@Override
-	public Stock editar(Stock s) {
-		return stockRepo.save(s);
-	}
 	
+	@Override
+	public Stock editar (Stock s) {		
+		return stockRepo.save (s);
+	}
 }
 

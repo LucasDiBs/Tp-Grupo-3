@@ -35,6 +35,7 @@ public class UserRol {
 	@Column(name="rol", nullable=false, length=20)
 	private String rol;
 	
+
 	public UserRol(User user, String rol) {
 		this.user = user;
 		this.rol = rol;

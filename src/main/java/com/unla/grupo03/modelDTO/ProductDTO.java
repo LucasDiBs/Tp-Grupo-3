@@ -23,7 +23,69 @@ public class ProductDTO {
 	private double precio;
 	
 	private double cantidad;
+	private boolean activo;
 	
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+
+	public double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+
+	public double getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(double cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+
 	public List<ProductDTO> convertirADto(List<Product> listaProductos){
 		
 		List<ProductDTO> listaDto = new ArrayList<ProductDTO>();
@@ -37,6 +99,7 @@ public class ProductDTO {
 			prodDto.setDescripcion(p.getDescripcion());
 			prodDto.setPrecio(p.getPrecio());
 			prodDto.setCantidad(p.getCantidad());
+			prodDto.setActivo(p.getActivo());
 			
 			listaDto.add(prodDto);	
 		}	

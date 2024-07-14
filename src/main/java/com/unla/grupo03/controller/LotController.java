@@ -35,7 +35,7 @@ public class LotController {
 	@PostMapping("/crear_lote")
 	public String guardarLote(@ModelAttribute("lote") Lot lote) {
 		service.crearLote(lote);
-		return "admin/lotes";
+		return "redirect:admin/lotes";
 	}
 	
 //	@GetMapping("/lotes/editar/{id}")
