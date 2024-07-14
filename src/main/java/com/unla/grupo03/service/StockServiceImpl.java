@@ -12,15 +12,21 @@ public class StockServiceImpl implements StockService{
 	
 	@Autowired
 	private StockRepository stockRepo;
-	
-	
 
 	@Override
 	public Stock crearStock(Stock s) {
-		// TODO Auto-generated method stub
+		return stockRepo.save(s);
+	}
+
+	@Override
+	public Stock traer(int id) {
+		return stockRepo.findById(id).get();
+	}
+
+	@Override
+	public Stock editar(Stock s) {
 		return stockRepo.save(s);
 	}
 	
-
 }
 

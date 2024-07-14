@@ -4,6 +4,9 @@ import com.unla.grupo03.model.Stock;
 
 public interface StockService {
 
-	Stock crearStock(Stock stock);
+	public Stock crearStock(Stock stock);
 	
+	public Stock traer(int id);
+	
+	public Stock editar(Stock s);
 }
