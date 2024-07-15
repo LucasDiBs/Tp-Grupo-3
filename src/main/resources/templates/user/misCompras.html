@@ -27,6 +27,9 @@
 
 					<li class="nav-item"><a class="nav-link" th:href="@{/user/usuario/{id}(id=${user.id})}"	th:text="${user.nombre}"></a></li>
 
+					<li class="nav-item"><a class="nav-link" href="/user/mostrarProductos">Comprar</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/user/misCompras/}+${user.id}">Mis Compras</a></li>
+
 					<li class="nav-item"><a class="nav-link" href="/logout">Salir</a></li>
 				</ul>
 			</div>
@@ -34,9 +37,11 @@
 	</nav>
 	<br>
 
-	<p>Esta página web es para mostrar la compras hechas por el usuario.</p>
+
 	<div class="container mt-4">
-		<table class="table tabale-striped tabale-bordered " ">
+		<table class="table tabale-striped tabale-bordered ">
+			<h1 style="color:green;" align="center">Mis Compras</h1>
+
 			<thead>
 				<tr align="center">
 					<th>Articulo</th>

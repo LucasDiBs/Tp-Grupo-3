@@ -95,6 +95,8 @@
 					<td>Cantidad Critica</td>
 					<td>Estado</td>
 					<td>Avisos</td>
+					<td>Acciones</td>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -109,7 +111,7 @@
 					<td th:text="${producto.cantidad}">Cantidad</td>
 					<td th:text="${producto.cantidadCritica}">Cantidad Critica</td>
 					<td th:text="${producto.activo}">Estado</td>
-					
+
 						 
 					<td th:if="${producto.cantidad > producto.cantidadCritica + 15}"
 						class="table-success align-items-center" role="alert"><svg
@@ -150,6 +152,12 @@
 								d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
 					 </svg> <strong th:text=" ${producto.nombre}"></strong>
 					</td>
+
+					<td style="white-space:nowrap">
+					 <a th:href="@{/admin/editarProducto(id=${producto.id})}" class="btn btn-success" type="button" >Editar</a>
+					 <a th:href="@{/admin/eliminar(id=${producto.id})}" class="btn btn-danger" type="button" onclick="return confirm('Desea eliminar el producto')">Eliminar</a>
+					</td>
+
 
 					
 						</tr>				 
@@ -204,14 +212,12 @@
 								d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
 					 </svg> <strong th:text=" ${producto.nombre}"></strong>
 					</td>
-
-			
-				
-				</tr>
+			<td style="white-space:nowrap">
+					<a th:href="@{/admin/editarProducto(id=${producto.id})}" class="btn btn-success" type="button" >Editar</a>
+					<a th:href="@{/admin/eliminar(id=${producto.id})}" class="btn btn-danger" type="button" onclick="return confirm('Desea eliminar el producto')">Eliminar</a>
+					</td>
+			</tr>
 					 
-				
-
-			
 			</tbody>
 		</table>
 	</div>

@@ -95,8 +95,8 @@
 					<td th:text="${lote.pedido.id}">Pedido</td>
 					<td th:text="${lote.usuario.id}">Usuario</td>
 					
-					<td> <a th:href="@{/admin/crear_lote/{id}(id=${lote.id})}"class="btm btn-info">Editar</a>	</td>	
-					<td> <a th:href="@{/admin/eliminar_lote/{id}(id=${lote.id})}"class="btm btn-info">Eliminar</a> </td>
+					<td> <a th:href="@{/lotes/crear_lote/{id}(id=${lote.id})}"class="btm btn-info">Editar</a>	</td>	
+					<td> <a th:href="@{/lotes/{id}(id=${lote.id})}"class="btm btn-info">Eliminar</a> </td>
 			</tbody>
 		</table>
 	</div>

@@ -3,6 +3,9 @@ package com.unla.grupo03.model;
 import java.time.LocalDate;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.unla.grupo03.service.StockService;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -45,4 +48,19 @@ public class Lot {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUser",nullable=false)
 	private User usuario;
+	
+//	@Autowired
+//	StockService s;
+//	
+//	public Lot(LocalDate fechaRecepcion, int cantidad, Order pedido, User usuario) {
+//		super();
+//		
+//		this.stock = s.traer(1);
+//		this.fechaRecepcion = fechaRecepcion;
+//		this.cantidad = cantidad;
+//		this.pedido = pedido;
+//		this.usuario = usuario;
+//	}
+	
+	
 }

@@ -45,5 +45,61 @@ public class Order {
 
 	@Column(name = "costoPedido")
 	private double costoPedido;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Product getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Product producto) {
+		this.producto = producto;
+	}
+
+	public int getCantidadPedida() {
+		return cantidadPedida;
+	}
+
+	public void setCantidadPedida(int cantidadPedida) {
+		this.cantidadPedida = cantidadPedida;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(String proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public double getCostoPedido() {
+		return costoPedido;
+	}
+
+	public void setCostoPedido(double costoPedido) {
+		this.costoPedido = costoPedido;
+	}
 		
 }
