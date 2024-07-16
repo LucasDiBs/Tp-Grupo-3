@@ -32,7 +32,6 @@ public class UserRol {
 
 	@Column(name="rol", nullable=false, length=20)
 	private String rol;
-	
 
 
 	public UserRol() {

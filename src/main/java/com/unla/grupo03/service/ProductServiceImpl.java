@@ -3,10 +3,14 @@ package com.unla.grupo03.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.crypto.IllegalBlockSizeException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.unla.grupo03.model.Product;
+
+import com.unla.grupo03.modelDTO.ProductDTO;
 
 
 import com.unla.grupo03.modelDTO.ProductDTO;
@@ -68,4 +72,27 @@ public class ProductServiceImpl implements ProductService{
 		return listaDto;
 	}
 	
+	
+	@Override
+	public Product buscarPorNombre(String nombre) {
+		
+		List<Product> lista=  productRepo.findAll();
+		int i =0;
+		
+		while(i < lista.size()-1) {
+			
+			if(lista.get(i).getNombre().equals(nombre)) {
+				
+			return lista.get(i);
+				
+				
+			}
+			
+			i++;
+			
+		}
+		
+		return null;
+		
+	}
 }

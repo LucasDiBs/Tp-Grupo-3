@@ -31,7 +31,7 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="stock", cascade = {CascadeType.ALL})
+/*	@OneToMany(fetch=FetchType.EAGER, mappedBy="stock", cascade = {CascadeType.ALL})
 	private Set<Lot> lotes = new HashSet<>();;
 
 	
@@ -41,6 +41,6 @@ public class Stock {
 		this.lotes = lotes;
 	}
 
-
+*/
 	
 }

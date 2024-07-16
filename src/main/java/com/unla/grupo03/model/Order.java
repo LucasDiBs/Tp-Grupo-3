@@ -18,7 +18,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter
+@NoArgsConstructor
 @Table(name = "pedido")
 public class Order {
 	@Id
@@ -45,7 +46,6 @@ public class Order {
 
 	@Column(name = "costoPedido")
 	private double costoPedido;
-
 
 	public int getId() {
 		return id;
@@ -103,5 +103,4 @@ public class Order {
 		this.costoPedido = costoPedido;
 	}
 
-		
 }

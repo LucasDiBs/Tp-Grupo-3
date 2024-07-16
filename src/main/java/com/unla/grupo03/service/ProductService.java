@@ -16,6 +16,8 @@ public interface ProductService {
 
 	public Product buscarPorId(int id_producto);
 	
+	public Product buscarPorNombre(String nombre);
+	
 
 	public List<ProductDTO> listarDto();
 

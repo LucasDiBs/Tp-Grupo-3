@@ -171,6 +171,7 @@ public class AdminController {
 		return "/admin/nuevoProducto"; 
 	}
 
+
 	@GetMapping("/editarProducto")
 	public String editarProductoForm(Model modelo, @RequestParam int id) {	
 		try {
@@ -310,7 +311,6 @@ public class AdminController {
 		
 		return "redirect:/admin/listarPedidos";
 	}
-	
 	
 	
 	

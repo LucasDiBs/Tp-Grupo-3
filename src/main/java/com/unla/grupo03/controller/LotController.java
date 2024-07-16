@@ -1,5 +1,8 @@
 package com.unla.grupo03.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,9 +11,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unla.grupo03.model.Lot;
+import com.unla.grupo03.model.Product;
+import com.unla.grupo03.model.Purchase;
+import com.unla.grupo03.model.Stock;
+import com.unla.grupo03.model.User;
+import com.unla.grupo03.repository.LotRepository;
+import com.unla.grupo03.repository.ProductRepository;
 import com.unla.grupo03.service.LotService;
+import com.unla.grupo03.service.ProductService;
+import com.unla.grupo03.service.ProductServiceImpl;
+import com.unla.grupo03.service.StockService;
+import com.unla.grupo03.service.StockServiceImpl;
 
 @Controller
 @RequestMapping("/admin/")
@@ -19,6 +33,16 @@ public class LotController {
 	@Autowired
 	private LotService service;
 	
+	@Autowired
+	private LotRepository repo;
+	
+	
+	@Autowired
+	private ProductRepository pRepo;
+	
+	/*@Autowired
+	private StockServiceImpl sService;
+	*/
 	@GetMapping({"/lotes"})	
 	private String listarLot(Model model) {
 		model.addAttribute("lotes", service.listar());			
@@ -26,18 +50,32 @@ public class LotController {
 	}
 
 	@GetMapping("/crear_lote")
-	public String mostrarFormularioDeRegistrarLote(Model model) {
-		Lot lote = new Lot();
-		model.addAttribute("lote", lote);
-		return "admin/crear_lote";
+	public String mostrarFormularioDeRegistrarLote(Model modelo) {
+List<Product> productos = pRepo.findAll();	
+		
+		Lot lote  = new Lot();		
+		modelo.addAttribute("lote", lote); 	
+		
+		modelo.addAttribute("productos", productos); 		
+		
+		return "/admin/crear_lote";
 	}
+
 	
 	@PostMapping("/crear_lote")
-
-	public String guardarLote(@ModelAttribute("lote") Lot lote) {
+	public String guardarLote(Lot lote, Model modelo) {
+		
+	
 		service.crearLote(lote);
-		return "redirect:admin/lotes";
+		return "redirect:/admin/lotes";
 	}
+	
+
+	
+
+	
+	
+	
 	
 //	@GetMapping("/lotes/editar/{id}")
 //	public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
@@ -58,9 +96,17 @@ public class LotController {
 //		return "redirect:/lotes";
 //	}
 //	
-//	@PostMapping("/lotes/{id}")
-//	public String eliminarEstudiante(@PathVariable int id) {
-//		service.delete(id);
-//		return "redirect:/lotes";
-//	}
+
+	
+	@GetMapping("/eliminarLote/{id}")
+	 public String eliminarProducto(@PathVariable int id){
+		
+			 service.delete(id);	 
+		 
+		 return"redirect:/admin/lotes";
+	 }
+
+
+	
+	
 }

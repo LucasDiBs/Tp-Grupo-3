@@ -35,10 +35,6 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
 
-
-
-
-
 					<!-- aca intentar menu desplegable para englobar pedidos: realizar, ver, modificar-->
 
 					<div class="dropdown">
@@ -67,76 +63,7 @@
 			</div>
 		</div>
 	</nav>
-
 	
-
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
-				<div class="card">
-					<div class="card-header text-center fs-4"> Crear Lote </div>
-
-					<th:block th:if="${session.msg}">
-						<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
-
-						<th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
-
-					</th:block>
-
-					<div class="card-body">
-						
-						
-
-						<form th:action="@{/admin/lotes}" th:object="${lote}" method="post">
-						
-							<div class="form-group">
-<<<<<<< HEAD
-
-						
-=======
-								
-								<label>Id Stock </label>
-								<input type="number" name="idStock" th:field="*{fechaRecepcion}"
-									class="form-control" placeholder="Id del stock" required>
-								<br>
-
-								<label>Fecha Recepcion</label>
-								<input type="date" name="fechaRecepcion" th:field="*{fechaRecepcion}"
-									class="form-control" placeholder="fehca recepcion" required>
-								<br>
-
->>>>>>> 4a629e125e45e10192e2a0c45d7217b048e5e169
-								<label>Cantidad</label>
-								<input type="text" name="cantidad" th:field="*{cantidad}" class="form-control"
-									placeholder="cantidad" required>
-								
-								<label>Pedido</label>
-<<<<<<< HEAD
-								<input type="text" name="pedido" th:field="*{pedido}" class="form-control" placeholder="pedido">
-								
-=======
-								<input type="text" name="pedido" th:field="*{pedido}" class="form-control"
-									placeholder="pedido" required>
-								
-								<label>usuario</label>
-								<input type="text" name="usuario" th:field="*{usuario}" class="form-control"
-									placeholder="usuario" required>
-
->>>>>>> 4a629e125e45e10192e2a0c45d7217b048e5e169
-							</div>
-							<br>
-
-							<button class="btn- btn-success">Guardar</button>
-
-						</form>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
 
 
 
