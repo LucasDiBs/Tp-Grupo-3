@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.unla.grupo03.model.Lot;
+import com.unla.grupo03.model.Product;
 import com.unla.grupo03.repository.ProductRepository;
 import com.unla.grupo03.service.LotService;
 import com.unla.grupo03.service.OrderService;
@@ -32,15 +33,19 @@ public class LotController {
 	}
 
 	@GetMapping("/crear_lote")
-	public String mostrarFormularioDeRegistrarLote(Model model) {
+	public String mostrarFormularioDeRegistrarLote(Model model, Model modelo) {
 		Lot lote = new Lot();
 		model.addAttribute("productos",prodRepo.findAll());
+		
 		model.addAttribute("lote", lote);
+		
 		return "admin/crear_lote";
 	}
 
 	@PostMapping("/crear_lote")
-	public String guardarLote(@ModelAttribute("lote") Lot lote) {
+	public String guardarLote(@ModelAttribute("lote") Lot lote) {	
+	
+		lote.getProducto().setCantidad(lote.getCantidad() +lote.getProducto().getCantidad());
 		service.crearLote(lote);
 		return "redirect:/admin/lotes";
 	}
@@ -57,6 +62,7 @@ public class LotController {
 		loteExistente.setStock(lote.getStock());;
 		loteExistente.setFechaRecepcion(lote.getFechaRecepcion());
 		loteExistente.setCantidad(lote.getCantidad());
+		loteExistente.getProducto().setCantidad(loteExistente.getCantidad() +loteExistente.getProducto().getCantidad());
 		loteExistente.setPedido(lote.getPedido());
 		loteExistente.setUsuario(lote.getUsuario());
 		
@@ -71,64 +77,5 @@ public class LotController {
 	}
 	
 	
-	/*
-    @Autowired
-    private LotService lotService;
 
-    @Autowired
-    private StockService stockService;
-
-    @Autowired
-    private OrderService pedidoService;
-
-    @Autowired
-    private UserService usuarioService;
-
-    @GetMapping({"/lotes"})
-    private String listarLot(Model model) {
-        model.addAttribute("lotes", lotService.listar());
-        return "admin/lotes";
-    }
-
-    @GetMapping("/crear_lote")
-    public String mostrarFormularioDeRegistrarLote(Model model) {
-        Lot lote = new Lot();
-        model.addAttribute("lote", lote);
-        return "admin/crear_lote";
-    }
-
-    @PostMapping("/crear_lote")
-    public String guardarLote(@ModelAttribute("lote") Lot lote) {
-        lote.setStock(stockService.traer(lote.getStock().getId()));
-        lote.setPedido(pedidoService.traerPedido(lote.getPedido().getId()));
-        lote.setUsuario(usuarioService.traerUserPorId(lote.getUsuario().getId()));
-        lotService.crearLote(lote);
-        return "redirect:/admin/lotes";
-    }
-
-    @GetMapping("/lotes/editar/{id}")
-    public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
-        model.addAttribute("lote", lotService.buscarPorId(id));
-        return "admin/editar_lote";
-    }
-
-    @PostMapping("/editar/{id}")
-    public String actualizarLote(@PathVariable int id, @ModelAttribute("lotes") Lot lote, Model model) {
-        Lot loteExistente = lotService.buscarPorId(id);
-        loteExistente.setStock(stockService.traer(lote.getStock().getId()));
-        loteExistente.setFechaRecepcion(lote.getFechaRecepcion());
-        loteExistente.setCantidad(lote.getCantidad());
-        loteExistente.setPedido(pedidoService.traerPedido(lote.getPedido().getId()));
-        loteExistente.setUsuario(usuarioService.traerUserPorId(lote.getUsuario().getId()));
-        
-        lotService.actualizar(loteExistente);
-        return "redirect:/admin/lotes";
-    }
-
-    @GetMapping("/elimina_lotes/{id}")
-    public String eliminarLote(@PathVariable int id) {
-        lotService.delete(id);
-        return "redirect:/admin/lotes";
-    }
-    */
 }
