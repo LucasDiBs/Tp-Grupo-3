@@ -36,7 +36,7 @@
 				  </a>				
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					<li ><a  class="dropdown-item "  th:href="@{/admin/crear_lote}">Agregar</a></li>
-					<li ><a  class="dropdown-item "  th:href="@{/admin/editar_lote}">Ver y Modificar</a></li>
+					<li ><a  class="dropdown-item "  th:href="@{/admin/lotes}">Ver y Modificar</a></li>
 				</ul>			
 			</div>
 			
@@ -69,6 +69,7 @@
 	    </div>
 	  </div>
 	</nav>
+	
 	<div class="container mt-4">
 	
 			<h1 style="color:green;" align="center">LOTES</h1>
@@ -92,12 +93,24 @@
 					<td th:text="${lote.id}">Id</td>
 					<td th:text="${lote.fechaRecepcion}">FechaRecepcion</td>
 					<td th:text="${lote.cantidad}">Cantidad</td>					
+<<<<<<< HEAD
 					<td th:text="${lote.producto.nombre}">Producto</td>
 					<td th:text="${lote.usuario.id}">Usuario</td>
 					
 					<td> <a th:href="@{/lotes/crear_lote/{id}(id=${lote.id})}"class="btm btn-info">Editar</a>	</td>	
 					<td> <a th:href="@{/admin/eliminarLote/{id}(id=${lote.id})}"class="btm btn-info">Eliminar</a> </td>
 				
+=======
+					<td th:text="${lote.pedido.id}">Id Pedido</td>
+					<td th:text="${lote.usuario.id}">Id Usuario</td>
+					
+					<!-- <td> <a th:href="@{/admin/lotes/editar/{id}(id=${lote.id})}"class="btm btn-info">Editar</a>	</td> -->	
+					<!-- <td> <a th:href="@{/admin/elimina_lotes/{id}(id=${lote.id})}"class="btm btn-info">Eliminar</a> </td> -->
+					
+					<td><a th:href="@{/admin/editar_lote/{id}(id=${lote.id})}" class="btn btn-primary btn-sm">Editar</a> </td>
+					
+                    <td><a th:href="@{/admin/elimina_lote/{id}(id=${lote.id})}" class="btn btn-danger btn-sm">Eliminar</a> </td>
+>>>>>>> aeb92dd3a69ab4c4f2bae451cd2fb7104b480ae2
 			</tbody>
 		</table>
 	</div>

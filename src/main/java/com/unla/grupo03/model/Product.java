@@ -38,8 +38,8 @@ public class Product {
 	@Column(name = "cantidadcritica")
 	private int cantidadCritica;
 	
-	@Column(name = "activo")
-	private boolean activo;
+	@Column(name = "activo", nullable = false)
+	private Boolean activo;
 
 
 	public Product() {}
@@ -128,13 +128,13 @@ public class Product {
 		this.cantidadCritica = cantidadCritica;
 	}
 	
-	public boolean getActivo() {
+	public Boolean getActivo() {
 		
 		return activo;
 	}
 
 
-	public void setActivo(boolean b) {
+	public void setActivo(Boolean b) {
 		this.activo = b;
 	}
 }

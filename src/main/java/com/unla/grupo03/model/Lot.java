@@ -39,6 +39,15 @@ public class Lot {
 	
 	@CreationTimestamp
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaEntrega;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="stock_id", nullable=false)
+	private Stock stock;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@CreationTimestamp
+
 	@Column(name = "fechaRecepcion")
 	private LocalDate fechaRecepcion;
 	
@@ -69,7 +78,5 @@ public class Lot {
 		this.producto = producto;
 		
 	}	
-	
-	
 	
 }

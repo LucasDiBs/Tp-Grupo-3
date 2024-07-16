@@ -35,6 +35,7 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
 
+
 					<!-- aca intentar menu desplegable para englobar pedidos: realizar, ver, modificar-->
 
 					<div class="dropdown">
@@ -64,6 +65,75 @@
 		</div>
 	</nav>
 	
+
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-header text-center fs-4"> Crear Lote </div>
+
+					<th:block th:if="${session.msg}">
+						<p class="text-center fs-4 text-success">[[${session.msg}]]</p>
+
+						<th:block th:text="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+
+					</th:block>
+
+					<div class="card-body">
+					
+						
+						<form th:action="@{/admin/crear_lote}" th:object="${lote}" method="post">
+						
+							<div class="form-group">
+								
+								<label>Id Stock </label>
+								<input type="number" name="idStock" th:field="*{stock}"
+									class="form-control" placeholder="Id del stock" required/>
+								<br>
+
+								<label>Fecha Recepcion</label>
+								<input type="date" name="fechaRecepcion" th:field="*{fechaRecepcion}"
+									class="form-control" placeholder="fehca recepcion" required/>
+								<br>
+
+								<label>Cantidad</label>
+								<input type="number" name="cantidad" th:field="*{cantidad}" class="form-control"
+									placeholder="cantidad" required/>
+								
+								<label>Producto</label>
+								
+								<select type="number" name="producto" th:field= "*{producto}" class="form-control" placeholder= "producto">
+								
+								<th:block th:each="producto: ${productos}">
+								
+								<option th:text="${producto.nombre}" th:value="${producto.id}"> 
+								
+								</option>
+								
+								</th:block>
+								</select>
+								<br>
+							
+								
+								<label>Id Usuario</label>
+								<input type="number" name="usuario" th:field="*{usuario}" class="form-control"
+									placeholder="usuario" required/>
+
+							</div>
+							<br>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+            				<a href="/admin/lotes" class="btn btn-secondary">Cancelar</a>
+							<!--  <button class="btn- btn-success">Guardar</button> -->
+
+						</form>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 
