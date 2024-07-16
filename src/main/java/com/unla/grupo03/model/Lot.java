@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.unla.grupo03.service.StockService;
 
@@ -30,11 +31,12 @@ public class Lot {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="stock_id", nullable=false)
 	private Stock stock;
 	
-	@CreationTimestamp
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@CreationTimestamp
 	@Column(name = "fechaRecepcion")
 	private LocalDate fechaRecepcion;
 	
@@ -48,19 +50,5 @@ public class Lot {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUser",nullable=false)
 	private User usuario;
-	
-//	@Autowired
-//	StockService s;
-//	
-//	public Lot(LocalDate fechaRecepcion, int cantidad, Order pedido, User usuario) {
-//		super();
-//		
-//		this.stock = s.traer(1);
-//		this.fechaRecepcion = fechaRecepcion;
-//		this.cantidad = cantidad;
-//		this.pedido = pedido;
-//		this.usuario = usuario;
-//	}
-	
 	
 }

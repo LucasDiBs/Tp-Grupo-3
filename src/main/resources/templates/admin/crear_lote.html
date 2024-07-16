@@ -35,7 +35,7 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
 
-
+					
 
 
 
@@ -70,7 +70,7 @@
 
 	
 
-
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
@@ -85,37 +85,39 @@
 					</th:block>
 
 					<div class="card-body">
-
-						<form th:action="@{/admin/lotes}" th:object="${lote}" method="post">
+					
+						
+						<form th:action="@{/admin/crear_lote}" th:object="${lote}" method="post">
 						
 							<div class="form-group">
 								
 								<label>Id Stock </label>
-								<input type="number" name="idStock" th:field="*{fechaRecepcion}"
-									class="form-control" placeholder="Id del stock" required>
+								<input type="number" name="idStock" th:field="*{stock}"
+									class="form-control" placeholder="Id del stock" required/>
 								<br>
 
 								<label>Fecha Recepcion</label>
 								<input type="date" name="fechaRecepcion" th:field="*{fechaRecepcion}"
-									class="form-control" placeholder="fehca recepcion" required>
+									class="form-control" placeholder="fehca recepcion" required/>
 								<br>
 
 								<label>Cantidad</label>
-								<input type="text" name="cantidad" th:field="*{cantidad}" class="form-control"
-									placeholder="cantidad" required>
+								<input type="number" name="cantidad" th:field="*{cantidad}" class="form-control"
+									placeholder="cantidad" required/>
 								
-								<label>Pedido</label>
-								<input type="text" name="pedido" th:field="*{pedido}" class="form-control"
-									placeholder="pedido" required>
+								<label>Id Pedido</label>
+								<input type="number" name="pedido" th:field="*{pedido}" class="form-control"
+									placeholder="pedido" required/>
 								
-								<label>usuario</label>
-								<input type="text" name="usuario" th:field="*{usuario}" class="form-control"
-									placeholder="usuario" required>
+								<label>Id Usuario</label>
+								<input type="number" name="usuario" th:field="*{usuario}" class="form-control"
+									placeholder="usuario" required/>
 
 							</div>
 							<br>
-
-							<button class="btn- btn-success">Guardar</button>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+            				<a href="/admin/lotes" class="btn btn-secondary">Cancelar</a>
+							<!--  <button class="btn- btn-success">Guardar</button> -->
 
 						</form>
 					</div>
