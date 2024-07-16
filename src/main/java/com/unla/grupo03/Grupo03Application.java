@@ -11,9 +11,11 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.security.core.userdetails.User;
 
 import com.unla.grupo03.model.Product;
+import com.unla.grupo03.model.Stock;
 import com.unla.grupo03.model.UserRol;
 import com.unla.grupo03.repository.ProductRepository;
 import com.unla.grupo03.repository.UserRepository;
+import com.unla.grupo03.service.StockService;
 import com.unla.grupo03.service.UserService;
 import com.unla.grupo03.service.UserServiceImpl;
 
@@ -31,12 +33,17 @@ public class Grupo03Application implements CommandLineRunner  {
 	@Autowired
 	UserServiceImpl uService;
 
+	@Autowired
+	StockService sService;
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		
+		Stock s= new Stock();
+		
+		sService.crearStock(s);
 			
-/*
+
 			Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3,true);
 			repositorio.save(producto1);
 			
@@ -61,15 +68,11 @@ public class Grupo03Application implements CommandLineRunner  {
 
 			uService.createAdmin(admin);		
 			
-<<<<<<< HEAD
-=======
 
-	
->>>>>>> aeb92dd3a69ab4c4f2bae451cd2fb7104b480ae2
 			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234");
 			
 			uService.createUser(user);
-	*/
+	
 
 	}
 }

@@ -35,6 +35,9 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
 
+					
+
+
 
 					<!-- aca intentar menu desplegable para englobar pedidos: realizar, ver, modificar-->
 
@@ -64,6 +67,7 @@
 			</div>
 		</div>
 	</nav>
+
 	
 
 	<br>
@@ -101,7 +105,11 @@
 								<input type="number" name="cantidad" th:field="*{cantidad}" class="form-control"
 									placeholder="cantidad" required/>
 								
-								<label>Producto</label>
+								<label>Id Pedido</label>
+								<input type="number" name="pedido" th:field="*{pedido}" class="form-control"
+									placeholder="pedido" required/>
+									
+									<label>Producto</label>
 								
 								<select type="number" name="producto" th:field= "*{producto}" class="form-control" placeholder= "producto">
 								
@@ -114,7 +122,7 @@
 								</th:block>
 								</select>
 								<br>
-							
+									
 								
 								<label>Id Usuario</label>
 								<input type="number" name="usuario" th:field="*{usuario}" class="form-control"

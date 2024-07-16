@@ -23,6 +23,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.Constraint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,7 +32,7 @@ import lombok.Setter;
 @Getter 
 @Setter
 @NoArgsConstructor
-@Table(name="lote", uniqueConstraints=@UniqueConstraint(columnNames= {"id", "idUser"}))
+
 public class Lot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,7 +66,11 @@ public class Lot {
 	@JoinColumn(name="idProducto",nullable=false)
 	private Product producto;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="idPedido",nullable=false)
+	private Order pedido;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUser",nullable=false)
 	private User usuario;
 

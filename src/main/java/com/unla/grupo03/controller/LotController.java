@@ -1,37 +1,15 @@
 package com.unla.grupo03.controller;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.*;
 
-
 import com.unla.grupo03.model.Lot;
-import com.unla.grupo03.model.Product;
-import com.unla.grupo03.model.Purchase;
-import com.unla.grupo03.model.Stock;
-import com.unla.grupo03.model.User;
-import com.unla.grupo03.repository.LotRepository;
 import com.unla.grupo03.repository.ProductRepository;
 import com.unla.grupo03.service.LotService;
-
-import com.unla.grupo03.service.ProductService;
-import com.unla.grupo03.service.ProductServiceImpl;
-import com.unla.grupo03.service.StockService;
-import com.unla.grupo03.service.StockServiceImpl;
-
 import com.unla.grupo03.service.OrderService;
+import com.unla.grupo03.service.ProductService;
 import com.unla.grupo03.service.StockService;
 import com.unla.grupo03.service.UserService;
 
@@ -45,15 +23,8 @@ public class LotController {
 	private LotService service;
 	
 	@Autowired
-	private LotRepository repo;
+	private ProductRepository prodRepo;
 	
-	
-	@Autowired
-	private ProductRepository pRepo;
-	
-	/*@Autowired
-	private StockServiceImpl sService;
-	*/
 	@GetMapping({"/lotes"})	
 	private String listarLot(Model model) {
 		model.addAttribute("lotes", service.listar());			
@@ -61,66 +32,19 @@ public class LotController {
 	}
 
 	@GetMapping("/crear_lote")
-	public String mostrarFormularioDeRegistrarLote(Model modelo) {
-		List<Product> productos = pRepo.findAll();	
-		
-		Lot lote  = new Lot();		
-		modelo.addAttribute("lote", lote); 	
-		
-		modelo.addAttribute("productos", productos); 		
-		
-		return "/admin/crear_lote";
+	public String mostrarFormularioDeRegistrarLote(Model model) {
+		Lot lote = new Lot();
+		model.addAttribute("productos",prodRepo.findAll());
+		model.addAttribute("lote", lote);
+		return "admin/crear_lote";
 	}
 
-
 	@PostMapping("/crear_lote")
-	public String guardarLote(Lot lote, Model modelo) {
-		
-	
+	public String guardarLote(@ModelAttribute("lote") Lot lote) {
 		service.crearLote(lote);
 		return "redirect:/admin/lotes";
 	}
 	
-
-	
-
-	
-	
-	
-	
-//	@GetMapping("/lotes/editar/{id}")
-//	public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
-//		model.addAttribute("lote", service.buscarPorId(id));
-//		return "editar_lote";
-//	}
-//	
-//	@PostMapping("/lotes/{id}")
-//	public String actualizarLote(@PathVariable int id, @ModelAttribute("lotes") Lot lote, Model model) {
-//		Lot loteExistente = service.buscarPorId(id);
-//		loteExistente.setStock(lote.getStock());;
-//		loteExistente.setFechaRecepcion(lote.getFechaRecepcion());
-//		loteExistente.setCantidad(lote.getCantidad());
-//		loteExistente.setPedido(lote.getPedido());
-//		loteExistente.setUsuario(lote.getUsuario());
-//		
-//		service.actualizar(loteExistente);
-//		return "redirect:/lotes";
-//	}
-//	
-
-	
-	@GetMapping("/eliminarLote/{id}")
-	 public String eliminarProducto(@PathVariable int id){
-		
-			 service.delete(id);	 
-		 
-		 return"redirect:/admin/lotes";
-	 }
-
-
-	
-	
-
 	@GetMapping("/editar_lote/{id}")
 	public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
 		model.addAttribute("lote", service.buscarPorId(id));
@@ -133,6 +57,7 @@ public class LotController {
 		loteExistente.setStock(lote.getStock());;
 		loteExistente.setFechaRecepcion(lote.getFechaRecepcion());
 		loteExistente.setCantidad(lote.getCantidad());
+		loteExistente.setPedido(lote.getPedido());
 		loteExistente.setUsuario(lote.getUsuario());
 		
 		service.actualizar(loteExistente);
@@ -146,4 +71,64 @@ public class LotController {
 	}
 	
 	
+	/*
+    @Autowired
+    private LotService lotService;
+
+    @Autowired
+    private StockService stockService;
+
+    @Autowired
+    private OrderService pedidoService;
+
+    @Autowired
+    private UserService usuarioService;
+
+    @GetMapping({"/lotes"})
+    private String listarLot(Model model) {
+        model.addAttribute("lotes", lotService.listar());
+        return "admin/lotes";
+    }
+
+    @GetMapping("/crear_lote")
+    public String mostrarFormularioDeRegistrarLote(Model model) {
+        Lot lote = new Lot();
+        model.addAttribute("lote", lote);
+        return "admin/crear_lote";
+    }
+
+    @PostMapping("/crear_lote")
+    public String guardarLote(@ModelAttribute("lote") Lot lote) {
+        lote.setStock(stockService.traer(lote.getStock().getId()));
+        lote.setPedido(pedidoService.traerPedido(lote.getPedido().getId()));
+        lote.setUsuario(usuarioService.traerUserPorId(lote.getUsuario().getId()));
+        lotService.crearLote(lote);
+        return "redirect:/admin/lotes";
+    }
+
+    @GetMapping("/lotes/editar/{id}")
+    public String mostrarFormularioDeEditar(@PathVariable int id, Model model) {
+        model.addAttribute("lote", lotService.buscarPorId(id));
+        return "admin/editar_lote";
+    }
+
+    @PostMapping("/editar/{id}")
+    public String actualizarLote(@PathVariable int id, @ModelAttribute("lotes") Lot lote, Model model) {
+        Lot loteExistente = lotService.buscarPorId(id);
+        loteExistente.setStock(stockService.traer(lote.getStock().getId()));
+        loteExistente.setFechaRecepcion(lote.getFechaRecepcion());
+        loteExistente.setCantidad(lote.getCantidad());
+        loteExistente.setPedido(pedidoService.traerPedido(lote.getPedido().getId()));
+        loteExistente.setUsuario(usuarioService.traerUserPorId(lote.getUsuario().getId()));
+        
+        lotService.actualizar(loteExistente);
+        return "redirect:/admin/lotes";
+    }
+
+    @GetMapping("/elimina_lotes/{id}")
+    public String eliminarLote(@PathVariable int id) {
+        lotService.delete(id);
+        return "redirect:/admin/lotes";
+    }
+    */
 }

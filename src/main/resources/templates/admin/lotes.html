@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DO<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -80,6 +80,7 @@
 				<tr>
 					<td>Id</td>
 					<td>FechaRecepcion</td>
+					<td>Producto</td>
 					<td>Cantidad</td>
 					<td>Pedido</td>
 					<td>Usuario</td>
@@ -92,15 +93,8 @@
 				<tr th:each="lote : ${lotes}">
 					<td th:text="${lote.id}">Id</td>
 					<td th:text="${lote.fechaRecepcion}">FechaRecepcion</td>
-					<td th:text="${lote.cantidad}">Cantidad</td>					
-<<<<<<< HEAD
 					<td th:text="${lote.producto.nombre}">Producto</td>
-					<td th:text="${lote.usuario.id}">Usuario</td>
-					
-					<td> <a th:href="@{/lotes/crear_lote/{id}(id=${lote.id})}"class="btm btn-info">Editar</a>	</td>	
-					<td> <a th:href="@{/admin/eliminarLote/{id}(id=${lote.id})}"class="btm btn-info">Eliminar</a> </td>
-				
-=======
+					<td th:text="${lote.cantidad}">Cantidad</td>					
 					<td th:text="${lote.pedido.id}">Id Pedido</td>
 					<td th:text="${lote.usuario.id}">Id Usuario</td>
 					
@@ -110,7 +104,6 @@
 					<td><a th:href="@{/admin/editar_lote/{id}(id=${lote.id})}" class="btn btn-primary btn-sm">Editar</a> </td>
 					
                     <td><a th:href="@{/admin/elimina_lote/{id}(id=${lote.id})}" class="btn btn-danger btn-sm">Eliminar</a> </td>
->>>>>>> aeb92dd3a69ab4c4f2bae451cd2fb7104b480ae2
 			</tbody>
 		</table>
 	</div>
