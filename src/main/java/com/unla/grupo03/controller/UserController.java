@@ -76,6 +76,7 @@ public class UserController {
 		auxUser.setId(id);
 		auxUser.setNombre(user.getNombre());
 		auxUser.setApellido(user.getApellido());
+		auxUser.setDireccion(user.getDireccion());		
 		auxUser.setEmail(user.getEmail());		
 		service.editarUser(auxUser);
 		return "/user/home";

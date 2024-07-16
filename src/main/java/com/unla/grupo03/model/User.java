@@ -35,6 +35,9 @@ public class User {
 	@Column(name="apellido", nullable=false, length=45)
 	private String apellido;
 	
+	@Column(name="direccion", nullable=false, length=60)
+	private String direccion;
+	
 	@Column(name="email", unique=true, nullable=false, length=45)
 	private String email;
 
@@ -53,12 +56,13 @@ public class User {
 		this.userRoles = userRoles;
 	}	
 	
-	public User(String nombre, String apellido, String email, String password) {
+	public User(String nombre, String apellido, String email, String password, String direccion) {
 		
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.password = password;
+		this.direccion = direccion;
 	}
 	
 	public void addRol(UserRol rol) {

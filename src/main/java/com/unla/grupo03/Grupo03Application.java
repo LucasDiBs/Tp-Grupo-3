@@ -38,7 +38,7 @@ public class Grupo03Application implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
+		
 		Stock s= new Stock();
 		
 		sService.crearStock(s);
@@ -63,17 +63,17 @@ public class Grupo03Application implements CommandLineRunner  {
 			repositorio.save(producto6);
 			
 			
-			com.unla.grupo03.model.User admin = new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234");
+			com.unla.grupo03.model.User admin = new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234","Calle false 123");
 			
 
 			uService.createAdmin(admin);		
 			
 
-			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234");
+			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234","Calle false 123");
 			
 			uService.createUser(user);
 	
-*/
+
 	}
 }
 
