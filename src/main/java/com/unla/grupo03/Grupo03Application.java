@@ -38,7 +38,7 @@ public class Grupo03Application implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		/*
 		Stock s= new Stock();
 		
 		sService.crearStock(s);
@@ -72,7 +72,7 @@ public class Grupo03Application implements CommandLineRunner  {
 			
 			uService.createUser(user);
 	
-
+*/
 	}
 }
 

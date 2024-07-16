@@ -10,6 +10,7 @@
 
 <body>
 	
+	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="#">Gestión de Usuarios</a> 
@@ -20,14 +21,28 @@
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="/admin/">Home</a>
-	        </li>
-	        <li class="nav-item"><a class="nav-link" href="admins">Administradores</a></li>
-	        <li class="nav-item"><a class="nav-link" th:href="@{/admin/registro}">Registrar Administrador</a></li>	
-			<li class="nav-item"><a class="nav-link" href="clients">Clientes</a></li>
-		
-			<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/nuevoProducto}">Registrar Productos</a></li>
-			<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/productos}">ver Productos</a></li>
+	        </li>  
+			<div class="dropdown">
+				<a class="btn btn-primary nav-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+				   Usuarios
+				  </a>				
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li ><a  class="dropdown-item "  th:href="@{/admin/registro}">Registrar Administrador</a></li>
+					<li ><a  class="dropdown-item " href="admins">Administradores</a></li>
+					<li ><a  class="dropdown-item "   href="clients">Clientes</a></li>
+				</ul>			
+			</div>
 			
+			
+			<div class="dropdown">
+				<a class="btn btn-primary nav-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+				   Productos
+				  </a>				
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<li ><a  class="dropdown-item "  th:href="@{/admin/nuevoProducto}">Agregar</a></li>
+					<li ><a  class="dropdown-item "   th:href="@{/admin/productos}">Ver y Modificar</a></li>
+				</ul>			
+			</div>
 			<!-- Menu desplegable para LOTES: agregar y modificar-->
 			
 			<div class="dropdown">
@@ -40,10 +55,6 @@
 				</ul>			
 			</div>
 			
-			
-				
-
-			   
 			<!-- aca intentar menu desplegable para englobar pedidos: realizar, ver, modificar-->
 
 			<div class="dropdown">
