@@ -145,8 +145,6 @@ public class UserController {
 		//guardo la compra en la bd
 		purchaseService.crearCompraUsuario(compraUsuario);
 		
-		System.out.println(compraUsuario);
-		
 		return "/user/ticket";
 	}	
 	

@@ -52,7 +52,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="productoDto:${listaDto}" th:if="${productoDto.activo}" >
+				<tr th:each="productoDto:${listaDto}">
 				
 					<td th:text="${productoDto.nombre}">Nombre</td>
 					<td th:text="${productoDto.descripcion}">Descripcion</td>
