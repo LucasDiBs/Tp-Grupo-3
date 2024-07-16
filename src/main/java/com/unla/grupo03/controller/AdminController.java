@@ -290,9 +290,7 @@ public class AdminController {
 		modelo.addAttribute("idProducto", idProducto);
 		
 		return "admin/formEditarPedido";
-	}
-	
-	
+	}	
 	
 	
 	@PostMapping("/editar")
@@ -300,6 +298,8 @@ public class AdminController {
 		
 		Product producto = service.buscarPorId(idProducto);
 		pedido.setProducto(producto);
+		pedido.setCostoPedido(pedido.getCantidadPedida() * pedido.getProducto().getPrecioReposicion());
+		
 	
 		//enviar a la bd para actualizar
 		Order pedidoAux = orderService.crearPedido(pedido);
