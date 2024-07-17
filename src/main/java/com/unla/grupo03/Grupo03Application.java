@@ -38,11 +38,10 @@ public class Grupo03Application implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
+		
 		Stock s= new Stock();
 		
-		sService.crearStock(s);
-			
+		sService.crearStock(s);			
 
 			Product producto1 = new Product("Sacapuntas", "Sacapuntas Rojo", (double)35,(double)20,5,3,true);
 			repositorio.save(producto1);
@@ -60,8 +59,7 @@ public class Grupo03Application implements CommandLineRunner  {
 			repositorio.save(producto5);
 			
 			Product producto6 = new Product("Lapies de colores", "10 Lapies de colores",  (double)500,(double)250,10,3,true);
-			repositorio.save(producto6);
-			
+			repositorio.save(producto6);			
 			
 			com.unla.grupo03.model.User admin = new com.unla.grupo03.model.User("Admin", "Admin","admin@admin","1234","Calle false 123");
 			
@@ -70,9 +68,8 @@ public class Grupo03Application implements CommandLineRunner  {
 
 			com.unla.grupo03.model.User user = new com.unla.grupo03.model.User("User", "User","user@user","1234","Calle false 123");
 			
-			uService.createUser(user);
-	
-*/
+			uService.createUser(user);	
+
 	}
 }
 
